@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title>로그인 / 회원가입</title>
+        <script type="text/javascript" src="script.js" charset="utf-8" ></script>
+        <link rel="stylesheet" href="../css/login_style.css">
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="form-wrap">
+                <div class="button-wrap">
+                    <div id="btn"></div>
+                    <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
+                    <button type="button" class="togglebtn" onclick="register()">REGISTER</button>
+                </div>
+                <div class="social-icons">
+                    <img src="../images/fb.png" alt="facebook">
+                    <img src="../images/tw.png" alt="twitter">
+                    <img src="../images/gl.png" alt="google">
+                    <a href="../index.jsp">
+                    <img src="../images/apple.jpg" alt="index.jsp">
+                    </a>
+                </div>
+                <form id="login" action="login_Ok.jsp" class="input-group" method="post">
+                    <input type="text" class="input-field" placeholder="User name or Email" required name="id">
+                    <input type="password" class="input-field" placeholder="Enter Password" required name="password">
+                    <button class="submit" onclick="lo">Login</button>  
+                </form>
+                
+                <form id="register" action="register_Ok.jsp" class="input-group" method="post">
+                    <input type="text" class="input-field" placeholder="User id" name="id" required>
+                    <input type="password" class="input-field" placeholder="Enter Password" name="password" required>
+                    <input type="password" class="input-field" placeholder="Repeat Password" name="password" required>
+                    <input type="text" class="input-field" placeholder="User name" name="name" required><br>
+                    <input type="radio" name="gender" value="남">남
+                    <input type="radio" name="gender" value="여">여<br>
+                     <input type="text" class="input-field1" name="yy" maxlength="4" placeholder="년(4자)" size="6">&nbsp;
+                        <select class="input-field1" name="mm">
+                            <option value="">월</option>
+                            <option value="01" >1</option>
+                            <option value="02" >2</option>
+                            <option value="03" >3</option>
+                            <option value="04" >4</option>
+                            <option value="05" >5</option>
+                            <option value="06" >6</option>
+                            <option value="07" >7</option>
+                            <option value="08" >8</option>
+                            <option value="09" >9</option>
+                            <option value="10" >10</option>
+                            <option value="11" >11</option>
+                            <option value="12" >12</option>
+                        </select>&nbsp;
+                           <input type="text" class="input-field1" name="dd" maxlength="2" placeholder="일" size="4" ><br>
+                           
+                            <select name="phone1" class="input-field1">
+               				<option value="010" selected>010</option>
+				              <option value="011">011</option>
+				               	<option value="016">016</option>
+				               <option value="017" >017</option>
+				               <option value="018">018</option>
+				               <option value="019">019</option>
+				            </select>
+            -
+            <input type="text" class="input-field1" name="phone2" size="4" maxlength="4">
+            -
+            <input type="text" class="input-field1" name="phone3" size="4" maxlength="4">
+                    <input type="text" class="input-field" placeholder="Your mail" name="mail" required>
+                    
+                    <input type="text" id="address_kakao" class="input-field" placeholder="Your Address [Click Here!]" name="address1" readonly />
+                    <input type="text" name="address2"  class="input-field" placeholder="Your Address Option" />
+                    
+                    <button class="reg_submit">Register</button>
+                    <button class="reset" type="reset">Reset</button>
+                </form>
+            </div>
+        </div>
+        
+        <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	<script>
+		window.onload = function(){
+	    document.getElementById("address_kakao").addEventListener("click", function(){ //주소입력칸을 클릭하면
+        //카카오 지도 발생
+        new daum.Postcode({
+            oncomplete: function(data) { //선택시 입력값 세팅
+                document.getElementById("address_kakao").value = data.address; // 주소 넣기
+            }
+        }).open();
+    });
+}
+</script>
+        
+        <script>
+            var x = document.getElementById("login");
+            var y = document.getElementById("register");
+            var z = document.getElementById("btn");
+            
+            function login(){
+                x.style.left = "50px";
+                y.style.left = "450px";
+                z.style.left = "0";
+            }
+
+            function register(){
+                x.style.left = "-400px";
+                y.style.left = "50px";
+                z.style.left = "110px";
+            }
+        </script>
+    </body>
+</html>
