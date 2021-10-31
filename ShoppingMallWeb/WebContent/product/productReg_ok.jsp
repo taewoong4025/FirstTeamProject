@@ -8,8 +8,8 @@
     pageEncoding="EUC-KR"%>
 <%
 	//파일 업로드 처리 부분
-	String path = request.getServletContext().getRealPath("productimg");
-	System.out.print(path);
+	String path = request.getServletContext().getRealPath("productImg");
+	System.out.println(path);
 	int size = 1024*1024*10;
 	String file = "";
 	String originalFile = "";
@@ -18,7 +18,7 @@
 	String str = (String)files.nextElement();
 	file=multi.getFilesystemName(str);
 	originalFile = multi.getOriginalFileName(str);
-
+	System.out.println(path);
 	//<jsp:useBean~~> 대신 ProductBean에 넣어주는 부분
 	ProductBean product = new ProductBean();
 	product.setPro_num(Integer.parseInt(multi.getParameter("pro_num")));

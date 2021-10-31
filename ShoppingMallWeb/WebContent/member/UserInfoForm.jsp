@@ -20,12 +20,13 @@
         }
     </style>
     
-    <script type="text/javascript">
+    <script type="text/javascript" charset="UTF-8">
         // 비밀번호 미입력시 경고창
         function checkValue(){
-            if(!document.deleteform.password.value){
-                alert("비밀번호를 입력하지 않았습니다.");
-                return false;
+            if(userInfo.password.value==""){
+                alert("비밀번호를 입력해 주세요.");
+               userInfo.password.focus();
+               return;
             }
         }
     </script>
@@ -34,10 +35,10 @@
 <body>
  
     <br><br>
-    <b><font size="6" color="gray">비밀번호를 입력해 주세요.</font></b>
+    <b><font size="6" color="gray">회원 정보 변경을 위한 비밀번호를 입력해 주세요.</font></b>
     <br><br><br>
  
-    <form name="userInfo" method="post" action="../member/modify.jsp" onsubmit="return checkValue()">
+    <form name="userInfo" method="post" action="../member/modify.jsp">
  
         <table>
             <tr>
@@ -46,13 +47,13 @@
             </tr>
             <tr>
             	<td colspan="2" align="center">
-       			 <input type="submit" value="확인" /> 
+       			 <input type="submit" value="확인" onclick="checkValue();" /> 
        	        <input type="button" value="취소" onclick="javascript:window.location='../index.jsp'">
             	</td>
             </tr>
         </table>
-        
     </form>
+    
 </body>
 </html>
 

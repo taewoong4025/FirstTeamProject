@@ -20,7 +20,7 @@
         }
     </style>
     
-    <script type="text/javascript">
+<!--     <script type="text/javascript">
         // 비밀번호 미입력시 경고창
         function checkValue(){
             if(!document.deleteform.password.value){
@@ -28,7 +28,7 @@
                 return false;
             }
         }
-    </script>
+    </script> -->
     
 </head>
 <body>

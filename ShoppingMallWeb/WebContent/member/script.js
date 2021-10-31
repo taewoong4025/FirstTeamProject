@@ -16,11 +16,11 @@ function check_ok(){
 		return;
 	}
 	if(document.register.name.value.length==0){
-		alert("이름을  써주세요.");
+		alert("이름을 써주세요.");
 		return;
 	}
 	if(document.register.mail.value.length==0){
-		alert("Email을  써주세요.");
+		alert("Email을 써주세요.");
 		return;
 	}
 	document.register.submit();

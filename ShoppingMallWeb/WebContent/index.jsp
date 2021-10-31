@@ -1,16 +1,21 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="shop.member.MemberBean"%>
 <%@page import="shop.member.MemberDBBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="shop.product.ProductBean"%>
 <%@page import="shop.product.ProductDBBean"%>
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%
+	// 숫자를 천 단위로 구분하는 포맷
+	DecimalFormat format = new DecimalFormat("###,###,###");
+%>
 <html lang="ko">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
+        <title> Gear Shop </title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -35,9 +40,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./board/list.jsp">리뷰게시판</a></li>
                         <li class="nav-item dropdown">
-                       
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">상품</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">상품리뷰</a></li>
@@ -50,11 +54,11 @@
                     </ul>
                             
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
+                        <button class="btn btn-outline-dark" type="button" onclick="location.href='product/cart.jsp' ">
                             <i class="bi-cart-fill me-1"></i>
-                            장바구니
+                            	장바구니
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                            
+                
                         </button>
                         
                         &nbsp;&nbsp;
@@ -97,7 +101,7 @@
                                 <li><a class="dropdown-item" href="./member/UserInfo.jsp">
 								<button class="btn btn-outline-dark" type="button">
 		                        <i class="bi bi-file-person-fill"></i>	
-        	                    회원정보&nbsp;</button></a>
+        	                 	   회원정보&nbsp;</button></a>
 							</li>
                             </ul>
                             </li>
@@ -123,12 +127,12 @@
                                 <li><a class="dropdown-item" href="#">
 								<button class="btn btn-outline-dark" type="button">
 		                        <i class="bi bi-file-person-fill"></i>	
-        	                    회원관리&nbsp;</button></a>
+        	                 		  회원관리&nbsp;</button></a>
 							</li>
 							   <li><a class="dropdown-item" href="#">
 								<button class="btn btn-outline-dark" type="button" onclick="logout()">
 		                        <i class="bi bi-file-person-fill"></i>	
-        	                    로그아웃&nbsp;</button></a>
+        	               			 로그아웃&nbsp;</button></a>
 							</li>
                             </ul>
                             </li>
@@ -145,7 +149,7 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Gear Shop</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">기어샾에 오신걸 환영합니다.</p>
+                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
                 </div>
             </div>
         </header>
@@ -172,14 +176,14 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="${pageContext.request.contextPath}/images/<%= pro_img %>" width="400" height="250"/>
+                            <img class="card-img-top" src="${pageContext.request.contextPath}/images/<%= pro_img %>" width="550" height="200"/>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
                                     <h5 class="fw-bolder"><%= pro_name %></h5>
                                     <!-- Product price-->
-                                     <%= pro_price %>
+                                     \<%= format.format(pro_price) %>
                                 </div>
                             </div>
                             <!-- Product actions-->
@@ -188,10 +192,9 @@
                             </div>
                         </div>
                      </div>
-                                    
                   <%
-			}
-		%>
+				}
+			   	  %>
        		 	</div>
        		 </div>
         </section> 

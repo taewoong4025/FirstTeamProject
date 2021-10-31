@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="shop.product.ProductDBBean"%>
 <%@page import="shop.product.ProductBean"%>
@@ -28,6 +29,7 @@
 			<td>力前包府</td>
 		</tr>
 		<%
+			DecimalFormat format = new DecimalFormat("###,###.##");
 			ProductDBBean db = ProductDBBean.getInstance();
 			ArrayList<ProductBean> productList = db.listProduct();
 			
@@ -49,9 +51,9 @@
 					<td><%= pro_name %></td>
 					<td><%= pro_code %></td>
 					<td><%= pro_stock %></td>
-					<td><%= pro_price %></td>
+					<td><%= format.format(pro_price) %></td>
 					<td><%= pro_description  %></td>
-					<td><img src="${pageContext.request.contextPath}/images/<%= pro_img %>" width="100" height="100"></td>
+					<td><img src="${pageContext.request.contextPath}/productImg/<%= pro_img %>" width="100" height="100"></td>
 					<td>
 						<input type="button" value="惑前 荐沥" onclick="location.href='productEdit.jsp?pro_num=<%= pro_num %>'"><br><br>
 						<form method="post" name="del_form" action="productDelete.jsp">

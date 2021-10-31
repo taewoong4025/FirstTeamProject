@@ -6,15 +6,15 @@
 	int pro_num = Integer.parseInt(request.getParameter("pro_num"));
 	ProductDBBean db = ProductDBBean.getInstance();
 	ProductBean product = db.getProduct(pro_num);
-	//새 이미지를 선택하지 않을 경우 사용할 이전 이미지 이름(ex-oo.jsp)
+	//새 이미지를 선택하지 않을 경우 사용할 이전 이미지 이름(ex-oo.jpg)
 	String ori_img = product.getPro_img();
 %>
 <html>
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-	<script type="text/javascript" src="productJS.js" charset="utf-8" ></script>
-	<style type="text/css">
+<script type="text/javascript" src="product.js" charset="utf-8" ></script>
+<style type="text/css">
 		h2{
 			margin-top:150px;
 			text-align: center;
@@ -43,7 +43,7 @@
 		<table border="1" rules="none">
 			<tr>
 				<td>1.제품 번호</td>
-				<td><input type="text" name="pro_num" value="<%= product.getPro_num() %>" ></td>
+				<td><input type="text" name="pro_num" value="<%= product.getPro_num() %>" readonly="readonly" ></td>
 			</tr>
 			<tr>
 				<td>2.제품 이름</td>
@@ -76,6 +76,7 @@
 				</td>
 			</tr>
 		</table>
+					
 	</form>
 </body>
 </html>

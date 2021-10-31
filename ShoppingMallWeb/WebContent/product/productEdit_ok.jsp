@@ -11,7 +11,7 @@
 <%
 	String ori_img = request.getParameter("ori_img");
 
-	String path = request.getServletContext().getRealPath("productimg");
+	String path = request.getServletContext().getRealPath("productImg");
 	int size = 1024*1024*10;
 	String file = "";
 	String originalFile = "";
@@ -33,7 +33,7 @@
 		//새 파일 있음
 		product.setPro_img(file);
 		//이전 파일 삭제
-		File deletefile = new File(request.getServletContext().getRealPath("productimg")+"\\"+ori_img);
+		File deletefile = new File(request.getServletContext().getRealPath("productImg")+"\\"+ori_img);
 		if(deletefile.exists())deletefile.delete();
 	}else{
 		//새 파일 없음 -> 이전파일 그대로 사용

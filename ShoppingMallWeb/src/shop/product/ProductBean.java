@@ -11,7 +11,7 @@ public class ProductBean {
 	private String pro_description;
 	private String pro_img;
 	private Timestamp pro_regdate;
-	
+	private int pro_hit;
 	
 	public int getPro_stock() {
 		return pro_stock;
@@ -61,5 +61,10 @@ public class ProductBean {
 	public void setPro_regdate(Timestamp pro_regdate) {
 		this.pro_regdate = pro_regdate;
 	}
-	
+	public int getPro_hit() {
+		return pro_hit;
+	}
+	public void setPro_hit(int pro_hit) {
+		this.pro_hit = pro_hit;
+	}
 }
