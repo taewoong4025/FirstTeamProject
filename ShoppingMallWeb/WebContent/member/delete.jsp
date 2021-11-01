@@ -37,7 +37,7 @@
     <b><font size="6" color="gray">탈퇴하시려면 비밀번호를 입력해 주세요.</font></b>
     <br><br><br>
  
-    <form name="delete" method="post" action="./delete_Ok.jsp" onsubmit="return checkValue()">
+    <form name="delete" method="post" action="./delete_Ok.jsp">
  
         <table>
             <tr>

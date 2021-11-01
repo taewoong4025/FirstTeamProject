@@ -30,7 +30,7 @@
         }
     </style>
     
-    <script type="text/javascript">
+ <!--    <script type="text/javascript">
     
  
         // 비밀번호 입력여부 체크
@@ -41,7 +41,7 @@
             }
         }
         
-    </script>
+    </script> -->
 
 </head>
 <body>

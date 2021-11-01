@@ -20,16 +20,6 @@
         }
     </style>
     
-    <script type="text/javascript" charset="UTF-8">
-        // 비밀번호 미입력시 경고창
-        function checkValue(){
-            if(userInfo.password.value==""){
-                alert("비밀번호를 입력해 주세요.");
-               userInfo.password.focus();
-               return;
-            }
-        }
-    </script>
     
 </head>
 <body>
@@ -38,7 +28,7 @@
     <b><font size="6" color="gray">회원 정보 변경을 위한 비밀번호를 입력해 주세요.</font></b>
     <br><br><br>
  
-    <form name="userInfo" method="post" action="../member/modify.jsp">
+    <form name="userInfo" method="post" action="../member/UserInfoForm_Ok.jsp">
  
         <table>
             <tr>
