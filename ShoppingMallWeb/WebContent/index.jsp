@@ -176,7 +176,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="${pageContext.request.contextPath}/images/<%= pro_img %>" width="550" height="200"/>
+                            <img class="card-img-top" src="${pageContext.request.contextPath}/productImg/<%= pro_img %>" width="550" height="200"/>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
