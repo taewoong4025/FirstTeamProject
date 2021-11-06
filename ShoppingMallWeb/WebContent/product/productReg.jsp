@@ -68,7 +68,7 @@
 				<td id="first">제품 가격</td>
 				<td><input type="text" name="pro_price" placeholder="숫자만 입력 가능"></td>
 			</tr>
-			<tr>S
+			<tr>
 				<td id="first">제품 설명</td>
 				<td><input type="text" name="pro_description"></td>
 			</tr>

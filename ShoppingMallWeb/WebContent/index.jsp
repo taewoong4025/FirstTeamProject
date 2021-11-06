@@ -40,7 +40,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./board/list.jsp">리뷰게시판</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./board/list.jsp">이용안내</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">상품</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -52,6 +52,7 @@
                             </ul>
                         </li>
                     </ul>
+                    
                             
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="button" onclick="location.href='product/cart.jsp' ">
@@ -89,20 +90,20 @@
                               <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               <i class="bi-menu-up me-1"></i>Menu</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li style="text-align:center"><b><%=sessionID %>님, Hi~ </b></li>
+                                <li style="text-align:center"><b>반갑습니다,<%=sessionID %>님  </b></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">
-                                <button class="btn btn-outline-dark" type="button" onclick="logout()">
-                        			<i class="bi bi-file-person-fill"></i>	  
-            		                로그아웃&nbsp;
-	                	        </button>
-    	                	    </a>
-        	               	  </li>
                                 <li><a class="dropdown-item" href="./member/UserInfo.jsp">
 								<button class="btn btn-outline-dark" type="button">
 		                        <i class="bi bi-file-person-fill"></i>	
         	                 	   회원정보&nbsp;</button></a>
 							</li>
+                                &nbsp;&nbsp;&nbsp;<button class="btn btn-outline-dark" type="button" onclick="logout()">
+                        			<i class="bi bi-file-person-fill"></i>	  
+            		              로그아웃&nbsp;
+	                	        </button>
+    	                	    </a>
+        	               	  </li>
                             </ul>
                             </li>
 	               	 	</div>

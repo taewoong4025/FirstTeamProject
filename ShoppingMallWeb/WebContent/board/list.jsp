@@ -2,10 +2,14 @@
 <%@page import="java.sql.Timestamp"%>
 <%@page import="shop.board.BoardBean"%>
 <%@page import="shop.board.BoardDBBean"%>
+<%@page import="shop.member.MemberBean"%>
+<%@page import="shop.member.MemberDBBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%
+		
+
 	String pageNum = request.getParameter("pageNum");
 
 	System.out.println("@@@### pageNum ===>"+pageNum);
@@ -22,7 +26,13 @@
 	int id=0, b_hit=0, b_level=0;
 	String b_title, b_content;
 	Timestamp b_date;
+	
+   	String sessionID = (String)session.getAttribute("sessionID");
+   	MemberDBBean manager = MemberDBBean.getInstance();
+   	MemberBean member = manager.getMember(sessionID);
 %>
+
+       
 <html>
 <head>
 <meta charset="EUC-KR">
@@ -30,12 +40,18 @@
 </head>
 <body>
 	<center>
-		<h1>상품 리뷰 게시판</h1>
+		<h1>이용안내 및 공지사항</h1>
 		<table width="600">
 			<tr>
+			<%
+			if (member.getUser_level() == 9 && sessionID != null) {
+			%>
 				<td align="right">
 					<a href="write.jsp?pageNum=<%= pageNum %>">글 쓰 기</a>
 				</td>
+				<%
+			}
+				%>
 				<td align="right">
 					<a href="../index.jsp">홈으로</a>
 				</td>
