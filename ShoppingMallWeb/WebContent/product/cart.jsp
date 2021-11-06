@@ -1,3 +1,5 @@
+<%@page import="shop.member.MemberBean"%>
+<%@page import="shop.member.MemberDBBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="shop.cart.CartBean"%>
 <%@page import="shop.cart.CartDBBean"%>
@@ -8,6 +10,8 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+
+     
 <link rel="stylesheet" href="../css/styles.css">
 <style type="text/css">
 	body {
@@ -40,6 +44,7 @@
 	DecimalFormat dFormat = new DecimalFormat("###,###,###");
 	// 섹션에 저장된 아이디값 가져오기
 	String sessionID = (String)session.getAttribute("sessionID");
+	
 	%>
 	
 	<%
@@ -130,7 +135,8 @@
 				</tr>
 				<tr>
 					<th colspan="5" id="center_td">
-						<input type="button" value="주문 하기" onclick="#"> <input type="button" value="주문 취소" onclick="location.href='../index.jsp'">
+						<input type="button" value="주문 하기" onclick="location.href='../product/pay.jsp?sessionID=<%= sessionID%>&amount=<%=amount%>'"> 
+						<input type="button" value="주문 취소" onclick="location.href='../index.jsp'">
 					</th>
 				</tr>
 		</table>
