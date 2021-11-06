@@ -1,11 +1,14 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="shop.member.MemberBean"%>
 <%@page import="shop.member.MemberDBBean"%>
-<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="shop.product.ProductDBBean"%>
 <%@page import="shop.product.ProductBean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@page import="shop.product.ProductDBBean"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%
+	// Ïà´ÏûêÎ•º Ï≤ú Îã®ÏúÑÎ°ú Íµ¨Î∂ÑÌïòÎäî Ìè¨Îß∑
+	DecimalFormat format = new DecimalFormat("###,###,###");
+%>
 <html lang="ko">
     <head>
         <meta charset="utf-8" />
@@ -36,12 +39,12 @@
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../board/list.jsp">∏Æ∫‰∞‘Ω√∆«</a></li>
+                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../board/list.jsp">Ïù¥Ïö©ÏïàÎÇ¥</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">ªÛ«∞</a>
+                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">ÏÉÅÌíà</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">ªÛ«∞∏Æ∫‰</a></li>
+                                <li><a class="dropdown-item" href="#">ÏÉÅÌíàÎ¶¨Î∑∞</a></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">Popular Items</a></li>
                                 <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
@@ -49,11 +52,12 @@
                             </ul>
                         </li>
                     </ul>
+                    
                             
                     <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="button" onclick="location.href='cart.jsp' ">
+                        <button class="btn btn-outline-dark" type="button" onclick="location.href='../product/cart.jsp' ">
                             <i class="bi-cart-fill me-1"></i>
-                            	¿ÂπŸ±∏¥œ
+                            	Ïû•Î∞îÍµ¨Îãà
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                 
                         </button>
@@ -67,90 +71,47 @@
                         </script>                   
                         
                       	<%
-                    	
-                    	if(sessionID==null){ // ∑Œ±◊¿Œ¿Ã æ»µ«æ˙¿ª ∂ß
-	                    
-	                    %>	  
-                        <!-- login -->
-                        <button class="btn btn-outline-dark" type="button" onclick="location.href='../member/login.html'">
-                        <i class="bi bi-file-person-fill"></i>	
-                            login&nbsp;
-                        </button>
-	                    
-	                    <%
-	                      }
-	                      else if(member.getUser_level()!=9 && sessionID != null){ //∑Œ±◊¿Œ«ﬂ¿ª ∂ß ∞¸∏Æ¿⁄∞° æ∆¥— ∞ÊøÏ
+                   
+	                     if(member.getUser_level()==9 && sessionID != null){ // Í¥ÄÎ¶¨ÏûêÏù∏ Í≤ΩÏö∞Îßå
+	                   
 	                    %>
-	                       <div class="btn btn-outline-dark">
-	                        <li class="nav-item dropdown" style="list-style: none;">
-                              <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                              <i class="bi-menu-up me-1"></i>Menu</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li style="text-align:center"><b><%=sessionID %>¥‘, Hi~ </b></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">
-                                <button class="btn btn-outline-dark" type="button" onclick="logout()">
-                        			<i class="bi bi-file-person-fill"></i>	  
-            		                ∑Œ±◊æ∆øÙ&nbsp;
-	                	        </button>
-    	                	    </a>
-        	               	  </li>
-                                <li><a class="dropdown-item" href="../member/UserInfo.jsp">
-								<button class="btn btn-outline-dark" type="button">
-		                        <i class="bi bi-file-person-fill"></i>	
-        	                 	   »∏ø¯¡§∫∏&nbsp;</button></a>
-							</li>
-                            </ul>
-                            </li>
-	               	 	</div>
-	                    
-	               	   <%
-	                      }else{ // ∞¸∏Æ¿⁄¿œ ∞ÊøÏ
-	                    %>
-	                        <div class="btn btn-outline-dark">
+	                   <div class="btn btn-outline-dark">
 	                        <li class="nav-item dropdown" style="list-style: none;">
                               <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               <i class="bi-menu-up me-1"></i>Menu</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li style="text-align:center"><b><%=sessionID %></b></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">
-                                <button class="btn btn-outline-dark" type="button" onclick="location.href='productView.jsp'">
-                        			<i class="bi bi-bag-plus"></i>
-                        			ªÛ«∞µÓ∑œ&nbsp;
-	                	        </button>
-    	                	    </a>
-        	               	  </li>
                                 <li><a class="dropdown-item" href="#">
 								<button class="btn btn-outline-dark" type="button">
 		                        <i class="bi bi-file-person-fill"></i>	
-        	                 		  »∏ø¯∞¸∏Æ&nbsp;</button></a>
+        	                 		  ÌöåÏõêÍ¥ÄÎ¶¨&nbsp;</button></a>
 							</li>
 							   <li><a class="dropdown-item" href="#">
 								<button class="btn btn-outline-dark" type="button" onclick="logout()">
 		                        <i class="bi bi-file-person-fill"></i>	
-        	               			 ∑Œ±◊æ∆øÙ&nbsp;</button></a>
+        	               			 Î°úÍ∑∏ÏïÑÏõÉ&nbsp;</button></a>
 							</li>
                             </ul>
                             </li>
-	               	 	</div>
-	                    <%	
+	               	 	</div>             
+	               	   <%
 	                      }
                       	%>
                     </form>
                 </div>
             </div>
         </nav>
-		 <!-- Header-->
+        <!-- Header-->
         <header class="bg-dark py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Gear Shop</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <p class="lead fw-normal text-white-50 mb-0">Í¥ÄÎ¶¨ÏûêÎßå Îì§Ïñ¥Ïò¨Ïàò ÏûàÎäî productView Page</p>
                 </div>
             </div>
-        </header>	
-	<style type="text/css">
+        </header>
+    <style type="text/css">
 		table{
 			margin: auto;
 			margin-top: 60;
@@ -193,21 +154,20 @@
 	<table>
 		<tr>
 			<td id="none" colspan="8" align="right">
-				<input id="regbutton" type="button" value="ªÛ«∞µÓ∑œ" onclick="location.href='productReg.jsp'">
+				<input id="regbutton" type="button" value="ÏÉÅÌíàÎì±Î°ù" onclick="location.href='productReg.jsp'">
 			</td>
 		</tr>
 		<tr id="first_line" align="center">
-			<td>¡¶«∞π¯»£</td> 
-			<td>¡¶«∞¿Ã∏ß</td>
-			<td>¡¶«∞ƒ⁄µÂ</td>
-			<td>¡¶«∞ºˆ∑Æ</td>
-			<td>¡¶«∞∞°∞›</td>
-			<td id="desc">¡¶«∞º≥∏Ì</td>
-			<td>¡¶«∞ªÁ¡¯</td>
-			<td>¡¶«∞∞¸∏Æ</td>
+			<td>Ï†úÌíàÎ≤àÌò∏</td> 
+			<td>Ï†úÌíàÏù¥Î¶Ñ</td>
+			<td>Ï†úÌíàÏΩîÎìú</td>
+			<td>Ï†úÌíàÏàòÎüâ</td>
+			<td>Ï†úÌíàÍ∞ÄÍ≤©</td>
+			<td id="desc">Ï†úÌíàÏÑ§Î™Ö</td>
+			<td>Ï†úÌíàÏÇ¨ÏßÑ</td>
+			<td>Ï†úÌíàÍ¥ÄÎ¶¨</td>
 		</tr>
 		<%
-			DecimalFormat format = new DecimalFormat("###,###.##");
 			ProductDBBean db = ProductDBBean.getInstance();
 			ArrayList<ProductBean> productList = db.listProduct();
 			
@@ -233,11 +193,11 @@
 					<td><%= pro_description  %></td>
 					<td><img src="${pageContext.request.contextPath}/productImg/<%= pro_img %>" width="100" height="100"></td>
 					<td>
-						<input id="button" type="button" value="ªÛ«∞ ºˆ¡§" onclick="location.href='productEdit.jsp?pro_num=<%= pro_num %>'"><br><br>
+						<input id="button" type="button" value="ÏÉÅÌíà ÏàòÏ†ï" onclick="location.href='productEdit.jsp?pro_num=<%= pro_num %>'"><br><br>
 						<form method="post" name="del_form" action="productDelete.jsp">
 							<input type="hidden" value="<%= pro_num %>" name="pro_num">
 							<input type="hidden" value="<%= pro_img %>" name="pro_img">
-							<input id="button" type="submit" value="ªÛ«∞ ªË¡¶">
+							<input id="button" type="submit" value="ÏÉÅÌíà ÏÇ≠Ï†ú">
 						</form>
 
 					</td>
@@ -248,4 +208,14 @@
 		<tr>
 	</table>
 </body>
+</html>
+         <!-- Footer-->
+        <footer class="py-5 bg-dark">
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
 </html>
