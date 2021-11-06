@@ -159,7 +159,9 @@
 		}
 		td {
 			vertical-align: middle;
-			border-bottom: 1px solid;	
+			border-bottom: 1px solid;
+			padding: 10px;	
+			width: 100px;
 		}
 		#none{
 			border-top: none;
@@ -176,16 +178,22 @@
 		tr{
 			height: 50px;
 		}
+		#regbutton {
+			width: 200px;
+			height: 30px;
+		}
 		#button:hover {
    		 	background-color: gray;
    		 	color: white;
    		}
-
+		#desc {
+			width: 200px;
+		}
 	</style>
 	<table>
 		<tr>
 			<td id="none" colspan="8" align="right">
-				<input type="button" value="惑前殿废" onclick="location.href='productReg.jsp'">
+				<input id="regbutton" type="button" value="惑前殿废" onclick="location.href='productReg.jsp'">
 			</td>
 		</tr>
 		<tr id="first_line" align="center">
@@ -194,7 +202,7 @@
 			<td>力前内靛</td>
 			<td>力前荐樊</td>
 			<td>力前啊拜</td>
-			<td>力前汲疙</td>
+			<td id="desc">力前汲疙</td>
 			<td>力前荤柳</td>
 			<td>力前包府</td>
 		</tr>
