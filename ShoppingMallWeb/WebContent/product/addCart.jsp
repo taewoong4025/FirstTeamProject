@@ -48,6 +48,9 @@
 		int re = cartDB.insertCart(cart);
 			// 데이터베이스에 정상적으로 추가가 되면, insertCart()메소드가 1을 반환함. 
 			if(re==1) {
+				// 장바구니 추가 시, 재고량 업데이트
+				product.setPro_stock((product.getPro_stock() - cart.getCart_stock()));
+				db.editProduct(product);
 			%>
 				<script>alert("상품을 장바구니에 추가하였습니다.");
 				document.location.href="productPage.jsp?pro_num=" + <%=pro_num%>;

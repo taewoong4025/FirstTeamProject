@@ -10,6 +10,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import shop.product.ProductBean;
+
 public class CartDBBean {
 	
 	private static CartDBBean instance = new CartDBBean();
@@ -65,6 +67,44 @@ public class CartDBBean {
 		}
 		
 		return re;
+	}
+	
+	public CartBean getCart(int cart_num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		String sql2 = "";
+		CartBean cart = new CartBean();
+		try {
+			conn = getConnection();
+			
+			sql2 = "select * from cart where cart_num=?";
+			pstmt = conn.prepareStatement(sql2);
+			pstmt.setInt(1, cart_num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cart.setCart_num(rs.getInt(1));
+				cart.setUser_id(rs.getString(2));
+				cart.setPro_name(rs.getString(3));
+				cart.setPro_num(rs.getInt(4));
+				cart.setPro_price(rs.getInt(5));
+				cart.setCart_stock(rs.getInt(6));
+				cart.setCart_regdate(rs.getTimestamp(7));
+				pstmt.execute();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch (Exception e2) {
+				e2.printStackTrace();
+			}
+		}
+		return cart;
 	}
 	
 	// 아이디 값을 받아, 해당 아이디가 보유한 장바구니 목록을 테이블에 가져오는 로직.
