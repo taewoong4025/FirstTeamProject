@@ -195,10 +195,13 @@
                 </div>
             </div>
         </header>
+	 <script type="text/javascript">
 	 
+	 </script>
 	<div style="padding-top: 50px; margin:40px;">
 		<table class="table table-hover">
 			<tr>
+				<th>check</th>
 				<th>상품</th>
 				<th>가격</th>
 				<th>수량</th>
@@ -226,15 +229,16 @@
 				amount += total;
 			%>
 				<tr>
-			<form method="post" action="./cartEdit.jsp">
+			<form method="post" action="checkboxDelete.jsp">
+					<td><input type="checkbox" name="checkbox" value="<%= i %>"></td>
 					<td><%= pro_name %></td>
 					<td>\<%= dFormat.format(pro_price) %></td>
 					<td>
 							<input type="hidden" name="cart_num" value="<%= cart_num %>">
 							<input id="input_stock" name="cart_stock" type="number" value="<%= cart_stock %>" min="1"> 개 
-							<input type="submit" value="적용">
+							<input type="submit" value="적용" onclick="javascript:document.form.action='cartEdit.jsp'">
 					</td>
-			</form>
+			
 					<td>\<%= dFormat.format((pro_price * cart_stock)) %></td>
 					<td><a href="./cartDelete.jsp?cart_num=<%= cart_num %>&pro_num=<%=pro_num %>" class="badge badge-danger" style="background-color:red;">삭제</a></td>
 				</tr>
@@ -251,7 +255,7 @@
 				</tr>
 				<tr>
 					<th colspan="5" id="right_td">
-						<!--<input type="button" value="선택한 장바구니 목록 삭제" onclick="#"> -->
+						<input type="submit" value="선택한 장바구니 목록 삭제" onclick="javascript:document.form.action='checkboxDelete.jsp'">
 						<input type="button" value="장바구니 전체 삭제" onclick="location.href='./cartAllDelete.jsp?allDel=<%= "all" %>'">
 					</th>
 				</tr>
@@ -262,7 +266,7 @@
 					</th>
 				</tr>
 		</table>
-	
+	</form>
 	
 	</div>
 	<%

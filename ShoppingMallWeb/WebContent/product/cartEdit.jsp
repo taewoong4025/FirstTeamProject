@@ -1,3 +1,5 @@
+<%@page import="shop.product.ProductDBBean"%>
+<%@page import="shop.product.ProductBean"%>
 <%@page import="shop.cart.CartDBBean"%>
 <%@page import="shop.cart.CartBean"%>
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
@@ -5,16 +7,31 @@
 <%
 	int cart_num = Integer.parseInt(request.getParameter("cart_num"));
 	int cart_stock = Integer.parseInt(request.getParameter("cart_stock"));
+	int update_cartStock = 0;
+	int result = 0;
 	String sessionID = (String)session.getAttribute("sessionID");
-
 	CartBean cart = new CartBean();
-	cart.setCart_num(cart_num);
-	cart.setCart_stock(cart_stock);
-	
-	out.print(cart_num);
-	out.print(cart_stock);
+	ProductBean product = new ProductBean();
 	
 	CartDBBean db = new CartDBBean().getInstance();
+	CartBean getCart = db.getCart(cart_num);
+	int ori_cartStock = getCart.getCart_stock();
+	int pro_num = getCart.getPro_num();
+	
+	/* if(ori_cartStock > cart_stock) {
+		update_cartStock = ori_cartStock - cart_stock;
+		
+	} else if(ori_cartStock < cart_stock) {
+		result = cart_stock - ori_cartStock;
+		update_cartStock = ori_cartStock + result;
+	} else {
+		update_cartStock = ori_cartStock;
+	} */
+
+	cart.setCart_num(cart_num);
+	/* cart.setCart_stock(update_cartStock); */
+	cart.setCart_stock(cart_stock);
+	
 	int re = db.editCart(cart);
 	
 	if(sessionID == null || sessionID.equals("")){
@@ -25,6 +42,23 @@
 	<%	
 	} else {
 		if(re == 1){
+			ProductDBBean Prodb = new ProductDBBean().getInstance();
+			product = Prodb.getProduct(pro_num);
+			int pro_stock = product.getPro_stock();
+			
+			if(ori_cartStock > cart_stock) {
+				result = ori_cartStock - cart_stock;
+				product.setPro_stock(pro_stock + result);
+				
+			} else if(ori_cartStock < cart_stock) {
+				result = cart_stock - ori_cartStock;
+				product.setPro_stock(pro_stock - result);
+			} else {
+				product.setPro_stock(pro_stock);
+			}
+			
+			Prodb.editProduct(product);
+			
 		%>
 			<script>document.location.href="cart.jsp";</script>
 			

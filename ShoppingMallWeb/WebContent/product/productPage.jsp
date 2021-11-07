@@ -66,7 +66,7 @@ String pro_img = product.getPro_img();
 
 				<form class="d-flex">
 					<button class="btn btn-outline-dark" type="button"
-						onclick="location.href='../product/cart.jsp'">
+						onclick="location.href='../product/cart.jsp' ">
 						<i class="bi-cart-fill me-1"></i> 장바구니 <span
 							class="badge bg-dark text-white ms-1 rounded-pill">0</span>
 
@@ -153,16 +153,6 @@ String pro_img = product.getPro_img();
 			</div>
 		</div>
 	</nav>
-	
-	 <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Gear Shop</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
-                </div>
-            </div>
-        </header>
-	
 	<!-- Product section-->
 
 	<section class="py-5">
@@ -176,11 +166,12 @@ String pro_img = product.getPro_img();
 				<div class="col-md-6">
 					<!-- 제품 코드 가져오기. -->
 					<div class="small mb-1">
-						제품 코드 : <%=product.getPro_code()%></div>
+						<%=product.getPro_code()%></div>
 					<!-- 제품명 가져 오기. -->
 					<h1 class="display-5 fw-bolder"><%=product.getPro_name()%></h1>
 					<div class="fs-5 mb-5">
-						<span><b>\</b><%=format.format(product.getPro_price())%></span>
+						<span><b>\</b><%=format.format(product.getPro_price())%></span><br>
+						<span><b>재고량 : </b><%=format.format(product.getPro_stock())%>개</span>
 					</div>
 					<!-- 제품 설명 -->
 					<p class="lead"><%=product.getPro_description()%></p>
@@ -191,7 +182,7 @@ String pro_img = product.getPro_img();
 							<input type="hidden" name="pro_num"
 								value="<%=product.getPro_num()%>"> <input
 								class="form-control text-center me-3" name="cart_stock"
-								type="number" value="1" style="max-width: 6rem" min="1" />
+								type="number" value="1" style="max-width: 6rem" min="1" max="<%= product.getPro_stock() %>"/>
 							<button class="btn btn-outline-dark flex-shrink-0" type="button"
 								onclick="cart_check()">
 								<i class="bi-cart-fill me-1"></i> 장바구니
