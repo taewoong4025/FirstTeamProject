@@ -40,7 +40,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./board/list.jsp">이용안내</a></li>
+                        <li class="nav-item"><a class="nav-link" href="../board/list.jsp">이용안내</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">상품</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -121,7 +121,7 @@
                                 <li><a class="dropdown-item" href="#!">
                                 <button class="btn btn-outline-dark" type="button" onclick="location.href='product/productView.jsp'">
                         			<i class="bi bi-bag-plus"></i>
-                        			상품등록&nbsp;
+                        			상품목록&nbsp;
 	                	        </button>
     	                	    </a>
         	               	  </li>
@@ -150,7 +150,7 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="text-center text-white">
                     <h1 class="display-4 fw-bolder">Gear Shop</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                    <p class="lead fw-normal text-white-50 mb-0">메인 페이지</p>
                 </div>
             </div>
         </header>

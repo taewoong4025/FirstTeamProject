@@ -66,7 +66,7 @@ String pro_img = product.getPro_img();
 
 				<form class="d-flex">
 					<button class="btn btn-outline-dark" type="button"
-						onclick="location.href='../product/cart.jsp' ">
+						onclick="location.href='../product/cart.jsp'">
 						<i class="bi-cart-fill me-1"></i> 장바구니 <span
 							class="badge bg-dark text-white ms-1 rounded-pill">0</span>
 
@@ -153,6 +153,16 @@ String pro_img = product.getPro_img();
 			</div>
 		</div>
 	</nav>
+	
+	 <header class="bg-dark py-5">
+            <div class="container px-4 px-lg-5 my-5">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Gear Shop</h1>
+                    <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+                </div>
+            </div>
+        </header>
+	
 	<!-- Product section-->
 
 	<section class="py-5">
@@ -166,7 +176,7 @@ String pro_img = product.getPro_img();
 				<div class="col-md-6">
 					<!-- 제품 코드 가져오기. -->
 					<div class="small mb-1">
-						<%=product.getPro_code()%></div>
+						제품 코드 : <%=product.getPro_code()%></div>
 					<!-- 제품명 가져 오기. -->
 					<h1 class="display-5 fw-bolder"><%=product.getPro_name()%></h1>
 					<div class="fs-5 mb-5">
