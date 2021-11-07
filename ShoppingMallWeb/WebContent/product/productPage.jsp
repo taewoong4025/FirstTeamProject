@@ -107,7 +107,7 @@ String pro_img = product.getPro_img();
 											<i class="bi bi-file-person-fill"></i> 로그아웃&nbsp;
 										</button>
 								</a></li>
-								<li><a class="dropdown-item" href="./member/UserInfo.jsp">
+								<li><a class="dropdown-item" href="../member/UserInfo.jsp">
 										<button class="btn btn-outline-dark" type="button">
 											<i class="bi bi-file-person-fill"></i> 회원정보&nbsp;
 										</button>
