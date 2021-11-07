@@ -125,7 +125,7 @@
 	                	        </button>
     	                	    </a>
         	               	  </li>
-                                <li><a class="dropdown-item" href="#">
+                                <li><a class="dropdown-item" href="./member/management.jsp">
 								<button class="btn btn-outline-dark" type="button">
 		                        <i class="bi bi-file-person-fill"></i>	
         	                 		  회원관리&nbsp;</button></a>

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
@@ -233,7 +236,7 @@ public class MemberDBBean {
 	                throw new RuntimeException(e.getMessage());
 	            }
 	        }
-	    } // end updateMember
+	  }
 
 
 	
@@ -302,4 +305,87 @@ public class MemberDBBean {
 	        }
 	    } // end deleteMember
 	    
+	 
+	 public ArrayList<MemberBean> listMember() throws Exception{ 
+			Connection conn = null;
+			Statement stmt = null;
+			ResultSet rs = null;
+			String sql = "select * from member";
+			MemberBean member = null;
+			
+			ArrayList<MemberBean> memberList = new ArrayList<MemberBean>();
+			try {
+				
+				conn = getConnection();
+				stmt = conn.createStatement();
+				rs = stmt.executeQuery(sql);
+				
+				while(rs.next()) {
+					
+					String birthday = rs.getDate("birth").toString();
+					String year = birthday.substring(0,4);
+					String month = birthday.substring(5,7);
+					String day = birthday.substring(8,10);
+					
+					String phone = rs.getString("phone");
+					String phone1 = phone.substring(0,3);
+					String phone2 = phone.substring(4,8);
+					String phone3 = phone.substring(9,13);
+					System.out.println("!!!!!!!!!!!!!!"+rs.getString("id"));
+					member = new MemberBean();
+					member.setId(rs.getString("id"));
+					member.setPassword(rs.getString("password"));
+					member.setName(rs.getString("name"));
+					member.setGender(rs.getString("gender"));
+					member.setYy(year);
+					member.setMm(month);
+					member.setDd(day);
+					member.setMail(rs.getString("mail"));
+					member.setPhone1(phone1);
+					member.setPhone2(phone2);
+					member.setPhone3(phone3);
+					member.setAddress1(rs.getString("address1"));
+					member.setAddress2(rs.getString("address2"));
+					member.setReg(rs.getTimestamp("reg"));
+					member.setUser_level(rs.getInt("user_level"));
+					memberList.add(member);
+				}
+				rs.close();
+				stmt.close();
+				conn.close();
+			
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		return memberList;
+	}
+	
+	 public int deleteManagment(String id) {
+		 Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
+			int re =-1;
+			
+			try {
+				conn = getConnection();
+				sql="delete from member where id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, id);
+				pstmt.executeUpdate();
+				re=1;
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(rs != null) rs.close();
+					if(pstmt != null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return re;
+		}
+	 
 }
