@@ -82,7 +82,7 @@
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li style="text-align:center"><b><%=sessionID %></b></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#">
+                                <li><a class="dropdown-item" href="../member/management.jsp">
 								<button class="btn btn-outline-dark" type="button">
 		                        <i class="bi bi-file-person-fill"></i>	
         	                 		  회원관리&nbsp;</button></a>
@@ -151,6 +151,8 @@
 			width: 200px;
 		}
 	</style>
+	 <section class="py-5">
+             
 	<table>
 		<tr>
 			<td id="none" colspan="8" align="right">
@@ -207,6 +209,8 @@
 		%>
 		<tr>
 	</table>
+
+	</section>
 </body>
 </html>
          <!-- Footer-->
