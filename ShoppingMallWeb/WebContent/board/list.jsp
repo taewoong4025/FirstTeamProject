@@ -9,7 +9,6 @@
     pageEncoding="EUC-KR"%>
 <%
 		
-
 	String pageNum = request.getParameter("pageNum");
 
 	System.out.println("@@@### pageNum ===>"+pageNum);
@@ -36,21 +35,24 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
-</head>
+
+  <!-- header.jsp include -->
+		<jsp:include page="../header.jsp"></jsp:include></head>
 <body>
 	<center>
-		<h1>이용안내 및 공지사항</h1>
+		<h1>공지사항</h1>
 		<table width="600">
 			<tr>
 			<%
-			if (member.getUser_level() == 9 && sessionID != null) {
+			if(sessionID != null){
+				if (member.getUser_level() == 9) {
 			%>
 				<td align="right">
 					<a href="write.jsp?pageNum=<%= pageNum %>">글 쓰 기</a>
 				</td>
 				<%
-			}
+				   }
+			  }
 				%>
 				<td align="right">
 					<a href="../index.jsp">홈으로</a>
@@ -94,7 +96,7 @@
 									<%
 								}
 							%>
-							<a href="show.jsp?id=<%= id %>&pageNum=<%= pageNum %>"><%= b_title %></a>
+							<a href="show.jsp?id=<%= id %>&pageNum=<%= pageNum %>&sessionID=<%=sessionID%>"><%= b_title %></a>
 						</td>
 						<td align="center">
 							<a href="mailto:>"><%= id %></a>
@@ -108,11 +110,17 @@
 					</tr>
 			<%
 				}
+	
 			%>
 		</table>
 	</center>
 	<center>
 		<%= BoardBean.pageNumer(4) %>
+		
 	</center>
+	     
+	 <!-- footer.jsp include -->
+	<jsp:include page="../footer.jsp"></jsp:include>
+	
 </body>
 </html>

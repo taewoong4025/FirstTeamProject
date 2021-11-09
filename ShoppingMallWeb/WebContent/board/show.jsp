@@ -7,6 +7,9 @@
 <%
 	String pageNum = request.getParameter("pageNum");
 	int Id = Integer.parseInt(request.getParameter("id"));
+	String sessionID = request.getParameter("sessionID");
+	
+	System.out.print("@@@###sessionID => : " + sessionID);
 
 	BoardDBBean db = BoardDBBean.getInstance();
 	BoardBean board = db.getBoard(Id, true);
@@ -26,7 +29,8 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<title>Insert title here</title>
+
+
 </head>
 <body>
 	<center>
@@ -50,7 +54,6 @@
 			</tr>
 			<tr height="30" align="center">
 				
-				
 				<td width="100">
 					작성일
 				</td>
@@ -58,7 +61,7 @@
 					<%= sdf.format(b_date) %>
 				</td>
 				<td width="100">
-					리뷰 상품
+					일단 공백
 				</td>
 				<td width="200">
 				
@@ -84,9 +87,17 @@
 			</tr>
 			<tr height="30">
 				<td colspan="4" align="right">
+					
+					<%
+						if(sessionID.equals("admin")){
+					%>
 					<input type="button" value="글수정" onclick="location.href='edit.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
 					<input type="button" value="글삭제" onclick="location.href='delete.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
-					<input type="button" value="답변글" onclick="location.href='write.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
+					<%
+						}
+					%>
+					<!--공지사항 이므로 답변글 x-->
+					<!--  <input type="button" value="답변글" onclick="location.href='write.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">-->
 					<input type="button" value="글목록" onclick="location.href='list.jsp?<%= pageNum %>'">
 				</td>
 			</tr>
