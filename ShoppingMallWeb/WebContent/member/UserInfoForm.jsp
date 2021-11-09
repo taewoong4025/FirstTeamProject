@@ -23,10 +23,14 @@
     
 </head>
 <body>
- 
-    <br><br>
+
+ <!-- header.jsp include -->
+		<jsp:include page="../header.jsp"></jsp:include>
+
+
+	<p align="center"> 
     <b><font size="6" color="gray">회원 정보 변경을 위한 비밀번호를 입력해 주세요.</font></b>
-    <br><br><br>
+    <br><br><br></p>
  
     <form name="userInfo" method="post" action="../member/UserInfoForm_Ok.jsp">
  
@@ -42,7 +46,11 @@
             	</td>
             </tr>
         </table>
-    </form>
+    </form> 
+    	<br><br><br><br><br><br>
+	     
+	 <!-- footer.jsp include -->
+	<jsp:include page="../footer.jsp"></jsp:include>
     
 </body>
 </html>

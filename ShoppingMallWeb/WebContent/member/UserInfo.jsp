@@ -3,6 +3,10 @@
 <%@page import="shop.member.MemberBean"%>
 <%@page import="shop.member.MemberDBBean"%>
 <html>
+
+ <!-- header.jsp include -->
+		<jsp:include page="../header.jsp"></jsp:include></head>
+		
 <head>
     <title>현재 유저정보 출력화면</title>
     
@@ -47,12 +51,14 @@
         MemberBean memberBean = manager.getMember(id);
                 
     %>
- 
-        <br><br>
-        <b><font size="6" color="gray">내 정보</font></b>
-        <br><br><br>
-                        <!-- 가져온 회원정보를 출력한다. -->
+                   <!-- 가져온 회원정보를 출력한다. -->
+                   <br><br><br>
         <table>
+        	<tr>
+			   <td colspan="2" align="center">
+			   	<b><font size="6" color="gray">내 정보</font></b>
+			   </td>    
+        	</tr>
             <tr>
                 <td id="title">아이디</td>
                 <td><%=memberBean.getId() %></td>
@@ -107,6 +113,9 @@
             </td>
             </tr>
         </table>
-        
+        <br><br><br><br><br><br>
+        	     
+	 <!-- footer.jsp include -->
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

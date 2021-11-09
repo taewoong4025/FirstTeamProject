@@ -5,6 +5,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+ <!-- header.jsp include -->
+		<jsp:include page="../header.jsp"></jsp:include>
+
 <meta charset="EUC-KR">
 	<%
 		String id = session.getAttribute("sessionID").toString();
@@ -42,24 +45,22 @@
         }
         
     </script> -->
-
+    
 </head>
 <body>
 
- <br><br>
-        <b><font size="6" color="gray">회원정보 수정</font></b>
-        <br><br><br>
+		<p align="center">
+	    <b><font size="6" color="gray">회원정보 수정</font></b>
+        <br><br></p>
         
         <!-- 입력한 값을 전송하기 위해 form 태그를 사용한다 -->
         <!-- 값(파라미터) 전송은 POST 방식 -->
         <form method="post" action="../member/modify_Ok.jsp" onsubmit="return checkValue()">
-       
-            
               
             <table>
                 <tr>
                     <td id="title">아이디</td>
-                    <td id="title"><%=memberBean.getId() %></td>
+                    <td><%=memberBean.getId() %></td>
                 </tr>
                 <tr>
                     <td id="title">비밀번호</td>
@@ -139,5 +140,8 @@
 }
 </script>
 
+	<br><br><br>
+ <!-- footer.jsp include -->
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

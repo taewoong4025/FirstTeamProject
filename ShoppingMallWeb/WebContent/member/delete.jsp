@@ -2,6 +2,10 @@
     pageEncoding="UTF-8"%>
 <html>
 <head>
+
+ <!-- header.jsp include -->
+		<jsp:include page="../header.jsp"></jsp:include>
+
     <title>탈퇴 화면</title>
     
     <style type="text/css">
@@ -53,6 +57,10 @@
         </table>
         
     </form>
+    
+    	<br><br><br>
+ <!-- footer.jsp include -->
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
 

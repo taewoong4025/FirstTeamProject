@@ -6,6 +6,8 @@
 <head>
 <meta charset="EUC-KR">
 <title>회원정보 수정처리</title>
+ <!-- header.jsp include -->
+		<jsp:include page="../header.jsp"></jsp:include>
 </head>
 <body>
 	<%-- 자바빈 관련 액션태그 사용 --%>
@@ -31,10 +33,15 @@
 		manager.updateMember(memberBean);
 	%>
 	
+	<p align="center">
 	<br><br>
 	<font size="5" color="gray">회원정보가 수정되었습니다.</font>
     <br><br>
-    <input type="button" value="메인으로" onclick="javascript:window.location='../index.jsp'"/>
+    <input type="button" value="메인으로" onclick="javascript:window.location='../index.jsp'"/></p>
 
+
+    	<br><br><br>
+ <!-- footer.jsp include -->
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>

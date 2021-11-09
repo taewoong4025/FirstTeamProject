@@ -115,13 +115,13 @@
                                 <li style="text-align:center"><b><%=sessionID %></b></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">
-                                <button class="btn btn-outline-dark" type="button" onclick="location.href='product/productView.jsp'">
+                                <button class="btn btn-outline-dark" type="button" onclick="location.href='../product/productView.jsp'">
                         			<i class="bi bi-bag-plus"></i>
                         			상품목록&nbsp;
 	                	        </button>
     	                	    </a>
         	               	  </li>
-                                <li><a class="dropdown-item" href="./member/management.jsp">
+                                <li><a class="dropdown-item" href="../member/management.jsp">
 								<button class="btn btn-outline-dark" type="button">
 		                        <i class="bi bi-file-person-fill"></i>	
         	                 		  회원관리&nbsp;</button></a>

@@ -38,6 +38,8 @@
 
   <!-- header.jsp include -->
 		<jsp:include page="../header.jsp"></jsp:include></head>
+			<br><br><br><br><br><br>
+		
 <body>
 	<center>
 		<h1>공지사항</h1>
@@ -116,8 +118,9 @@
 	</center>
 	<center>
 		<%= BoardBean.pageNumer(4) %>
-		
 	</center>
+	
+	<br><br><br><br><br><br>
 	     
 	 <!-- footer.jsp include -->
 	<jsp:include page="../footer.jsp"></jsp:include>
