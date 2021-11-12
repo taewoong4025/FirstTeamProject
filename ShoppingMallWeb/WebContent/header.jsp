@@ -40,14 +40,14 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="../board/list.jsp">공지사항</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">대기</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">상품</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">상품리뷰</a></li>
+                                <li><a class="dropdown-item" href="#">게시판</a></li>
                                 <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                                <li><a class="dropdown-item" href="../board/list.jsp">공지사항</a></li>
+                                <li><a class="dropdown-item" href="../board/reviewList.jsp">리뷰게시판</a></li>
                             	
                             </ul>
                         </li>
@@ -85,18 +85,23 @@
 	                      }
 	                      else if(member.getUser_level()!=9 && sessionID != null){ //로그인했을 때 관리자가 아닌 경우
 	                    %>
-	                       <div class="btn btn-outline-dark">
+	                         <div class="btn btn-outline-dark">
 	                        <li class="nav-item dropdown" style="list-style: none;">
                               <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                               <i class="bi-menu-up me-1"></i>Menu</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li style="text-align:center"><b>반갑습니다,<%=sessionID %>님  </b></li>
+                                <li style="text-align:center"><b>반갑습니다.<br><%=sessionID %>님</b></li>
                                 <li><hr class="dropdown-divider" /></li>
                                 <li><a class="dropdown-item" href="#!">
                                 <li><a class="dropdown-item" href="../member/UserInfo.jsp">
 								<button class="btn btn-outline-dark" type="button">
 		                        <i class="bi bi-file-person-fill"></i>	
         	                 	   회원정보&nbsp;</button></a>
+							</li>
+							  <li><a class="dropdown-item" href="../member/buyInfo.jsp">
+								<button class="btn btn-outline-dark" type="button">
+		                        <i class="bi bi-bag-check-fill"></i>	
+        	                 	   구매정보&nbsp;</button></a>
 							</li>
                                 &nbsp;&nbsp;&nbsp;<button class="btn btn-outline-dark" type="button" onclick="logout()">
                         			<i class="bi bi-file-person-fill"></i>	  

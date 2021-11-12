@@ -312,5 +312,76 @@ public class CartDBBean {
 		return total;
 	}
 	
+	public void buytbl_insert(String user_id) {
+        Connection conn = null;
+        Statement stmt = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sql = "";
+        String sql2 = "";
+
+        try {
+            conn = getConnection();
+            stmt = conn.createStatement();
+            sql="insert into buy(user_id,pro_name,pro_price,cart_stock) select user_id,pro_name,pro_price,cart_stock from cart";
+            rs = stmt.executeQuery(sql);
+            
+            sql2="delete from cart where user_id = ?";
+           	pstmt = conn.prepareStatement(sql2);
+        	pstmt.setString(1, user_id);
+			pstmt.executeUpdate();
+            
+        }catch (Exception e) {
+            e.printStackTrace();
+        }finally {
+            try {
+                if(rs != null) rs.close();
+                if(stmt != null) stmt.close();
+                if(pstmt != null) pstmt.close();
+                if(conn != null) conn.close();
+            } catch (Exception e2) {
+                e2.printStackTrace();
+            }
+        }
+    }
+	
+	
+	// 아이디 값을 받아, 해당 아이디가 보유한 장바구니 목록을 테이블에 가져오는 로직.
+		public ArrayList<buyBean> listBuy(String user_id){
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "";
+			
+			ArrayList<buyBean> buyList = new ArrayList<buyBean>();
+			try {
+				conn = getConnection();
+				sql = "select * from buy where user_id=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, user_id);
+				rs = pstmt.executeQuery();
+				
+				while(rs.next()) {
+					buyBean buy = new buyBean();
+					buy.setUser_id(rs.getString("user_id"));
+					buy.setPro_name(rs.getString("pro_name"));
+					buy.setPro_price(rs.getInt("pro_price"));
+					buy.setCart_stock(rs.getInt("cart_stock"));
+					buy.setCart_regdate(rs.getTimestamp("buy_regdate"));
+					buyList.add(buy);
+				}
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				try {
+					if(rs != null) rs.close();
+					if(pstmt != null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (Exception e2) {
+					e2.printStackTrace();
+				}
+			}
+			return buyList;
+		}
 	
 }
