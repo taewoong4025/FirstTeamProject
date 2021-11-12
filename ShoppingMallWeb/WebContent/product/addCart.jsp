@@ -60,7 +60,7 @@
 			}else{
 			%>
 				<script>alert("추가 실패");
-				document.location.href="productPage.jsp";</script>
+				document.location.href="productPage.jsp?pro_num=" + <%=pro_num%>;</script>
 			<%
 			}
 	}

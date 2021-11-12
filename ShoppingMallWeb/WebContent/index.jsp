@@ -1,3 +1,4 @@
+<%@page import="shop.cart.CartDBBean"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@page import="shop.member.MemberBean"%>
 <%@page import="shop.member.MemberDBBean"%>
@@ -34,6 +35,9 @@
         
     	MemberDBBean manager = MemberDBBean.getInstance();
     	MemberBean member = manager.getMember(sessionID);
+    	
+    	CartDBBean cartDB = new CartDBBean().getInstance();
+    	int total = cartDB.myCartTotal(sessionID);
         %>
         
         <!-- Navigation-->
@@ -62,7 +66,7 @@
                         <button class="btn btn-outline-dark" type="button" onclick="location.href='product/cart.jsp' ">
                             <i class="bi-cart-fill me-1"></i>
                             	장바구니
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            <span class="badge bg-dark text-white ms-1 rounded-pill"><%= total %></span>
                 
                         </button>
                         

@@ -115,6 +115,7 @@ public class ProductDBBean {
 			pstmt2.setInt(1, pro_num);
 			rs = pstmt2.executeQuery();
 			if(rs.next()) {
+				System.out.println("!!@@##$$" + rs.getInt(1));
 				product.setPro_num(rs.getInt(1));
 				product.setPro_name(rs.getString(2));
 				product.setPro_code(rs.getString(3));

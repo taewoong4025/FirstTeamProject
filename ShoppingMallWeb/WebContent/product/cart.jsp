@@ -22,7 +22,7 @@
 	<script type="text/javascript">
                         
 		function logout(){
-			location.href="member/logout.jsp";
+			location.href='../member/logout.jsp';
 		}
     </script>        
 <style type="text/css">
@@ -171,7 +171,7 @@
 		                        <i class="bi bi-file-person-fill"></i>	
         	                 		  회원관리&nbsp;</button></a>
 							</li>
-							   <li><a class="dropdown-item" href="#">
+							   <li><a class="dropdown-item" href="../member/logout.jsp">
 								<button class="btn btn-outline-dark" type="button" onclick="logout()">
 		                        <i class="bi bi-file-person-fill"></i>	
         	               			 로그아웃&nbsp;</button></a>

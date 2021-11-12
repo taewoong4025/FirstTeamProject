@@ -11,6 +11,7 @@ DecimalFormat format = new DecimalFormat("###,###.##");
 String sessionID = (String) session.getAttribute("sessionID");
 MemberDBBean manager = MemberDBBean.getInstance();
 MemberBean member = manager.getMember(sessionID);
+System.out.print("####$$@@@"+request.getParameter("pro_num"));
 int pro_num = Integer.parseInt(request.getParameter("pro_num"));
 ProductDBBean db = ProductDBBean.getInstance();
 ProductBean product = db.getProduct(pro_num);
@@ -177,10 +178,10 @@ String pro_img = product.getPro_img();
 					<p class="lead"><%=product.getPro_description()%></p>
 
 					<!-- 제품 번호와 구매수량을 addCartForm에 넘겨 데이터베이스 처리하기 -->
-					<form name="addCartForm" action="../product/addCart.jsp" method="post">
+					<form name="addCartForm" action="./addCart.jsp" method="post">
 						<div class="d-flex">
-							<input type="hidden" name="pro_num"
-								value="<%=product.getPro_num()%>"> <input
+							<input type="hidden" name="pro_num" value="<%=product.getPro_num()%>"> 
+								<input
 								class="form-control text-center me-3" name="cart_stock"
 								type="number" value="1" style="max-width: 6rem" min="1" max="<%= product.getPro_stock() %>"/>
 							<button class="btn btn-outline-dark flex-shrink-0" type="button"
