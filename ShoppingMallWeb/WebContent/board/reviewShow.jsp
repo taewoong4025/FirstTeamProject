@@ -1,53 +1,54 @@
-<%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.sql.Timestamp"%>
-<%@page import="shop.board.BoardBean"%>
-<%@page import="shop.board.BoardDBBean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
-<%
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="shop.reviewBoard.reviewBoardBean"%>
+<%@page import="shop.reviewBoard.reviewBoardDBBean"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+    <%
 	String pageNum = request.getParameter("pageNum");
 	int Id = Integer.parseInt(request.getParameter("id"));
 	String sessionID = request.getParameter("sessionID");
 	
 	System.out.print("@@@###sessionID => : " + sessionID);
-
-	BoardDBBean db = BoardDBBean.getInstance();
-	BoardBean board = db.getBoard(Id, true);
+	
+	reviewBoardDBBean db = reviewBoardDBBean.getInstance();
+	reviewBoardBean board = db.getBoard(Id, true);
 	
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 	int id=0, b_hit=0;
-	String b_title="", b_content="";
+	String b_title="", b_content="", b_img="";
 	Timestamp b_date=null;
 	
 	id = board.getId();
+	b_img = board.getB_img();
 	b_title = board.getB_title();
 	b_content = board.getB_content();
 	b_date = board.getB_date();
 	b_hit = board.getB_hit();
-%>
+    %>
 <html>
 <head>
-<meta charset="EUC-KR">
-
-  <!-- header.jsp include -->
+<meta charset="UTF-8">
+ <!-- header.jsp include -->
 		<jsp:include page="../header.jsp"></jsp:include></head>
 		<br><br><br>
 
 <body>
 	<center>
-		<h1>°Ô½Ã¹° Á¶È¸</h1>
+		<h1>ê²Œì‹œë¬¼ ì¡°íšŒ</h1>
 		<table border="1" width="800" cellspacing="0">
 			<tr height="30" align="center">
 				<td width="100">
-					¹øÈ£
+					ë²ˆí˜¸
 				</td>
 				<td width="200">
 					<%= id %>
 				</td>
 				
 				<td width="100">
-					Á¶È¸¼ö
+					ì¡°íšŒìˆ˜
 				</td>
 				<td width="200">
 					<%= b_hit %>
@@ -57,21 +58,22 @@
 			<tr height="30" align="center">
 				
 				<td width="100">
-					ÀÛ¼ºÀÏ
+					ì‘ì„±ì¼
 				</td>
 				<td width="200">
 					<%= sdf.format(b_date) %>
 				</td>
 				<td width="100">
-					ÀÏ´Ü °ø¹é
+				ì´ë¯¸ì§€
 				</td>
 				<td width="200">
-				
+				    <!-- Product image-->
+                <img src="${pageContext.request.contextPath}/reviewImg/<%= b_img %>" width="550" height="200"/>
 				</td>
 			</tr>
 			<tr height="30">
 				<td width="100" align="center">
-					Á¦¸ñ
+					ì œëª©
 				</td>
 				<td colspan="3" width="100">
 					<%= b_title %>
@@ -79,7 +81,7 @@
 			</tr>
 			<tr height="30">
 				<td width="100" align="center">
-					³»¿ë
+					ë‚´ìš©
 				</td>
 				<td colspan="3" width="100">
 					<pre>
@@ -93,14 +95,14 @@
 					<%
 						if(sessionID.equals("admin")){
 					%>
-					<input type="button" value="±Û¼öÁ¤" onclick="location.href='edit.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
-					<input type="button" value="±Û»èÁ¦" onclick="location.href='delete.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
+					<input type="button" value="ê¸€ìˆ˜ì •" onclick="location.href='edit.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
+					<input type="button" value="ê¸€ì‚­ì œ" onclick="location.href='delete.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
 					<%
 						}
 					%>
-					<!--°øÁö»çÇ× ÀÌ¹Ç·Î ´äº¯±Û x-->
-					<!--  <input type="button" value="´äº¯±Û" onclick="location.href='write.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">-->
-					<input type="button" value="±Û¸ñ·Ï" onclick="location.href='list.jsp?<%= pageNum %>'">
+					<!--ê³µì§€ì‚¬í•­ ì´ë¯€ë¡œ ë‹µë³€ê¸€ x-->
+					<!--  <input type="button" value="ë‹µë³€ê¸€" onclick="location.href='write.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">-->
+					<input type="button" value="ê¸€ëª©ë¡" onclick="location.href='reviewList.jsp?<%= pageNum %>'">
 				</td>
 			</tr>
 		</table>
@@ -110,14 +112,8 @@
 	     
 	 <!-- footer.jsp include -->
 	<jsp:include page="../footer.jsp"></jsp:include>
-		
+</head>
+<body>
+
 </body>
 </html>
-
-
-
-
-
-
-
-

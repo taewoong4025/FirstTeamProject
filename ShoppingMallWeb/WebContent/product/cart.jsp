@@ -225,7 +225,7 @@
 				int total = pro_price * cart_stock;
 				amount += total;
 			%>
-				<tr>
+			<tr>
 			<form method="post" action="./cartEdit.jsp">
 					<td><%= pro_name %></td>
 					<td>\<%= dFormat.format(pro_price) %></td>
@@ -262,7 +262,6 @@
 					</th>
 				</tr>
 		</table>
-	
 	
 	</div>
 	<%

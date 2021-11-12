@@ -1,13 +1,16 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="java.sql.Timestamp"%>
-<%@page import="shop.board.BoardBean"%>
-<%@page import="shop.board.BoardDBBean"%>
+<%@page import="shop.reviewBoard.reviewBoardDBBean"%>
+<%@page import="shop.reviewBoard.reviewBoardBean"%>
 <%@page import="shop.member.MemberBean"%>
 <%@page import="shop.member.MemberDBBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
-<%
+<%@page import="java.sql.Timestamp"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+  
+ 
+ <%
 String pageNum = request.getParameter("pageNum");
 
 System.out.println("@@@### pageNum ===>" + pageNum);
@@ -16,8 +19,8 @@ if (pageNum == null) {
 	pageNum = "1";
 }
 
-BoardDBBean db = BoardDBBean.getInstance();
-ArrayList<BoardBean> boardList = db.listBoard(pageNum);
+reviewBoardDBBean db = reviewBoardDBBean.getInstance();
+ArrayList<reviewBoardBean> boardList = db.listBoard(pageNum);
 
 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
@@ -25,41 +28,40 @@ int id = 0, b_hit = 0, b_level = 0;
 String b_title, b_content;
 Timestamp b_date;
 
-String sessionID = (String) session.getAttribute("sessionID");
+String sessionID = (String)session.getAttribute("sessionID");
 MemberDBBean manager = MemberDBBean.getInstance();
 MemberBean member = manager.getMember(sessionID);
 %>
 
-
 <html>
 <head>
-<meta charset="EUC-KR">
-
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
 <!-- header.jsp include -->
 <jsp:include page="../header.jsp"></jsp:include></head>
 <br>
 <br>
 <br>
 
-<body>
-	
-	<h1 align="center">°øÁö»çÇ×</h1><br><br>
+<h1 align="center">ë¦¬ë·°ê²Œì‹œíŒ</h1><br><br>
 	
 	<div class="container">
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>¹øÈ£</th>
-					<th>±ÛÁ¦¸ñ</th>
-					<th>ÀÛ¼ºÀÚ</th>
-					<th>ÀÛ¼ºÀÏ</th>
-					<th>Á¶È¸¼ö</th>
+					<th>ë²ˆí˜¸</th>
+					<th>ê¸€ì œëª©</th>
+					<th>ì‘ì„±ì</th>
+					<th>ì‘ì„±ì¼</th>
+					<th>ì¡°íšŒìˆ˜</th>
 				</tr>
 			</thead>
 			
 				<%
 				for(int i=0; i<boardList.size(); i++){
-					BoardBean board = boardList.get(i);
+					reviewBoardBean board = boardList.get(i);
 					id = board.getId();
 					b_title = board.getB_title();
 					b_content = board.getB_content();
@@ -81,8 +83,8 @@ MemberBean member = manager.getMember(sessionID);
 									<%
 								}
 							%>
-							<a href="show.jsp?id=<%= id %>&pageNum=<%= pageNum %>&sessionID=<%=sessionID%>"><%= b_title %></a></td>
-					<td><a href="mailto:>">°ü¸®ÀÚ</a></td>
+							<a href="reviewShow.jsp?id=<%= id %>&pageNum=<%= pageNum %>&sessionID=<%=sessionID%>"><%= b_title %></a></td>
+					<td><a href="mailto:>"><%= id %></a></td>
 					<td><%= sdf.format(b_date)%></td>
 					<td><%= b_hit %></td>
 				</tr>
@@ -94,16 +96,16 @@ MemberBean member = manager.getMember(sessionID);
 		<hr/>
 		
 			<%
-				if(sessionID != null && member.getUser_level() == 9){
+				if(sessionID != null){
 			%>
 		
-			<a class="btn btn-primary btn-sm float-end" href="write.jsp?pageNum=<%= pageNum %>">±Û¾²±â</a>
+			<a class="btn btn-primary btn-sm float-end" href="reviewWrite.jsp?pageNum=<%=pageNum%>">ê¸€ì“°ê¸°</a>
 			
 			<%
-						}
+				}
 			%>
 	<center>
-		<%= BoardBean.pageNumer(4) %>
+		<%= reviewBoardBean.pageNumer(4) %>
 	</center>
 </div>
 
