@@ -57,7 +57,8 @@
         <!-- 값(파라미터) 전송은 POST 방식 -->
         <form method="post" action="../member/modify_Ok.jsp" onsubmit="return checkValue()">
               
-            <table>
+         <div class="container">
+            <table class="table table-striped">
                 <tr>
                     <td id="title">아이디</td>
                     <td><%=memberBean.getId() %></td>
@@ -124,6 +125,7 @@
                 </td>
                 </tr>
             </table>
+            </div>
         </form>
 
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

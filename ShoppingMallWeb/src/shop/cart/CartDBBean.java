@@ -26,7 +26,7 @@ public class CartDBBean {
 		return ds.getConnection();
 	}
 	
-	// Àå¹Ù±¸´Ï(cart) Å×ÀÌºí¿¡ °ª Ãß°¡ÇÏ´Â ·ÎÁ÷
+	// ï¿½ï¿½Ù±ï¿½ï¿½ï¿½(cart) ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ ï¿½ß°ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int insertCart(CartBean cart) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -35,7 +35,7 @@ public class CartDBBean {
 		int re = -1;
 		int number = 1;
 		
-		// Ä«Æ®ÂÊ¿¡¼­ ¹Þ¾Æ¿Ã º¯¼ö°ª ¼ÂÆÃ
+		// Ä«Æ®ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 		String user_id = cart.getUser_id();
 		int pro_num = cart.getPro_num();
 		int cart_stock = cart.getCart_stock();
@@ -96,10 +96,10 @@ public class CartDBBean {
 				conn.close();
 			}
 			
-			//ÇöÀç ·¹ÄÚµå Áß¿¡¼­ °¡Àå Å« ±Û ¹øÈ£¸¦ ¾ò¾î³½´Ù.(¹øÈ£+1)
-			System.out.println("¿ä±â Ãß°¡ ¼º°ø");
+			//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Úµï¿½ ï¿½ß¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Å« ï¿½ï¿½ ï¿½ï¿½È£ï¿½ï¿½ ï¿½ï¿½î³½ï¿½ï¿½.(ï¿½ï¿½È£+1)
+			System.out.println("ï¿½ï¿½ï¿½ ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}catch (Exception e) {
-			System.out.println("Ãß°¡ ½ÇÆÐ");
+			System.out.println("ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		}
 		
@@ -146,7 +146,7 @@ public class CartDBBean {
 		return cart;
 	}
 	
-	// ¾ÆÀÌµð °ªÀ» ¹Þ¾Æ, ÇØ´ç ¾ÆÀÌµð°¡ º¸À¯ÇÑ Àå¹Ù±¸´Ï ¸ñ·ÏÀ» Å×ÀÌºí¿¡ °¡Á®¿À´Â ·ÎÁ÷.
+	// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾ï¿½, ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	public ArrayList<CartBean> listCart(String user_id){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -186,7 +186,7 @@ public class CartDBBean {
 		return cartList;
 	}
 	
-	// Àå¹Ù±¸´Ï ³»¿¡¼­ ¼ö·®À» Á¶ÀýÇÏ¿© Å×ÀÌºí¿¡ ¿¬µ¿ÇÏ´Â ·ÎÁ÷
+	// ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int editCart(CartBean cart) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -218,7 +218,7 @@ public class CartDBBean {
 		return re;
 	}
 	
-	// Àå¹Ù±¸´Ï ÆäÀÌÁö(cart.jsp)¿¡¼­ ÇØ´ç ¸ñ·Ï¿¡ »èÁ¦¸¦ ´©¸£¸é ±× »óÇ°¸¸ »èÁ¦ÇÏ´Â ·ÎÁ÷
+	// ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(cart.jsp)ï¿½ï¿½ï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½
 	public int deleteCart(int cart_num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -248,7 +248,7 @@ public class CartDBBean {
 		return re;
 	}
 	
-	// Àå¹Ù±¸´Ï ÆäÀÌÁö(cart.jsp)¿¡¼­ ¸ñ·Ï ÀüÃ¼ÀÇ »óÇ°À» »èÁ¦ÇÏ´Â ·ÎÁ÷.
+	// ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(cart.jsp)ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½.
 	public int deleteAllCart(String user_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -345,8 +345,7 @@ public class CartDBBean {
         }
     }
 	
-	
-	// ¾ÆÀÌµð °ªÀ» ¹Þ¾Æ, ÇØ´ç ¾ÆÀÌµð°¡ º¸À¯ÇÑ Àå¹Ù±¸´Ï ¸ñ·ÏÀ» Å×ÀÌºí¿¡ °¡Á®¿À´Â ·ÎÁ÷.
+	// ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾ï¿½, ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ù±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
 		public ArrayList<buyBean> listBuy(String user_id){
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -356,7 +355,7 @@ public class CartDBBean {
 			ArrayList<buyBean> buyList = new ArrayList<buyBean>();
 			try {
 				conn = getConnection();
-				sql = "select * from buy where user_id=?";
+				sql = "select * from buy where user_id=? order by \"buy_regdate\" desc";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user_id);
 				rs = pstmt.executeQuery();

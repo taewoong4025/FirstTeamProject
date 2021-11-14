@@ -1,22 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
+    
+    <%
 	String pageNum = request.getParameter("pageNum");
 	int id = Integer.parseInt(request.getParameter("id"));
 	
 %>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-	<script type="text/javascript" src="board2.js" charset="utf-8" ></script>
-	 <!-- header.jsp include -->
+<script type="text/javascript" src="board2.js" charset="utf-8" ></script>
+ <!-- header.jsp include -->
 		<jsp:include page="../header.jsp"></jsp:include></head>
 		<br><br><br>
 <body>
 		<div class="container" align="center">
-		<h2>공지 삭제</h2>
-		<form name="form" method="post" action="delete_ok.jsp?id=<%= id %>&pageNum=<%= pageNum %>">
+		<h2>리뷰 삭제</h2>
+		<form name="form" method="post" action="reviewDelete_ok.jsp?id=<%= id %>&pageNum=<%= pageNum %>">
 			<table>
 				<tr height="50">
 					<td colspan="2">
@@ -33,16 +34,17 @@
 					<td colspan="2">
 						<input type="button" value="글삭제" onclick="delete_ok()">
 						<input type="reset" value="다시작성">
-						<input type="button" value="글목록" onclick="location.href='list.jsp?pageNum=<%= pageNum %>'">
+						<input type="button" value="글목록" onclick="location.href='reviewList.jsp?pageNum=<%= pageNum %>'">
 					</td>
 				</tr>
 			</table>
 		</form>
 		</div>
 		
-	<br><br><br><br><br><br>
+		<br><br><br><br><br><br>
 	     
 	 <!-- footer.jsp include -->
 	<jsp:include page="../footer.jsp"></jsp:include>
+
 </body>
 </html>

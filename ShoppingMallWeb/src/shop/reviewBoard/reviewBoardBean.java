@@ -34,14 +34,14 @@ public class reviewBoardBean {
 		int startPage = pageNum - temp;
 
 		if ((startPage - limit) > 0) {
-			str = "<a href='list.jsp?pageNum=" + (startPage - 1) + "'>[ÀÌÀü]</a>&nbsp;&nbsp;";
+			str = "<a href='reviewList.jsp?pageNum=" + (startPage - 1) + "'>[ì´ì „]</a>&nbsp;&nbsp;";
 		}
 
 		for (int i = startPage; i < (startPage + limit); i++) {
 			if (i == pageNum) {
 				str += "[" + i + "]&nbsp;&nbsp;";
 			} else {
-				str += "<a href='list.jsp?pageNum=" + i + "'>[" + i + "]</a>&nbsp;&nbsp;";
+				str += "<a href='reviewList.jsp?pageNum=" + i + "'>[" + i + "]</a>&nbsp;&nbsp;";
 			}
 			if (i >= pageCount) {
 				break;
@@ -49,7 +49,7 @@ public class reviewBoardBean {
 		}
 
 		if ((startPage + limit) <= pageCount) {
-			str += "<a href='list.jsp?pageNum=" + (startPage + limit) + "'>[´ÙÀ½]</a>&nbsp;&nbsp;";
+			str += "<a href='reviewList.jsp?pageNum=" + (startPage + limit) + "'>[ë‹¤ìŒ]</a>&nbsp;&nbsp;";
 		}
 		return str;
 	}

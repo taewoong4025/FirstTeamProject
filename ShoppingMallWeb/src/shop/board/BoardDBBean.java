@@ -67,8 +67,8 @@ public class BoardDBBean {
 					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
-			pstmt.setString(2, HanConv.toKor(board.getB_title()));
-			pstmt.setString(3, HanConv.toKor(board.getB_content()));
+			pstmt.setString(2,HanConv.toKor(board.getB_title()));
+			pstmt.setString(3,HanConv.toKor(board.getB_content()));
 			pstmt.setTimestamp(4, board.getB_date());
 			pstmt.setInt(5, board.getB_hit());
 //			pstmt.setString(6, board.getB_ip());

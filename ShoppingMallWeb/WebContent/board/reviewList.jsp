@@ -83,8 +83,8 @@ MemberBean member = manager.getMember(sessionID);
 									<%
 								}
 							%>
-							<a href="reviewShow.jsp?id=<%= id %>&pageNum=<%= pageNum %>&sessionID=<%=sessionID%>"><%= b_title %></a></td>
-					<td><a href="mailto:>"><%= id %></a></td>
+							<a style="text-decoration:none" href="reviewShow.jsp?id=<%= id %>&pageNum=<%= pageNum %>&sessionID=<%=sessionID%>"><%= b_title %></a></td>
+					<td><a style="text-decoration:none" href="mailto:>"><%= id %></a></td>
 					<td><%= sdf.format(b_date)%></td>
 					<td><%= b_hit %></td>
 				</tr>

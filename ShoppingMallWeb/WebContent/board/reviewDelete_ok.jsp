@@ -1,19 +1,20 @@
-<%@page import="shop.board.BoardDBBean"%>
+<%@page import="shop.reviewBoard.reviewBoardDBBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
+
+	<%
 	String pageNum = request.getParameter("pageNum");
 	int id = Integer.parseInt(request.getParameter("id"));
 	String password = request.getParameter("password");
 	
 	System.out.print("@@@@###==>" + password);
 	
-	BoardDBBean db = BoardDBBean.getInstance();
+	reviewBoardDBBean db = reviewBoardDBBean.getInstance();
 	int re = db.deleteBoard(id, password);
 	
-	if(re == 1){
+if(re == 1){
 		
-		response.sendRedirect("list.jsp?pageNum="+pageNum);
+		response.sendRedirect("reviewList.jsp?pageNum="+pageNum);
 		%>
 		<script type="text/javascript">
 			alert("해당 게시물이 삭제되었습니다!");
@@ -36,3 +37,13 @@
 		<%
 	}
 %>
+
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+</body>
+</html>
