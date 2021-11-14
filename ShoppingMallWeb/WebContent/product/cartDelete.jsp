@@ -21,11 +21,11 @@
 	// 섹션값(로그인이)이 있어 있으면, 장바구니 데이터 삭제하는 로직 실행.	
 		} else {		
 			// 상품 삭제 시 재고량 업데이트를 위한 로직
-			CartBean cart = db.getCart(cart_num);
+			CartBean cart = db.getCart(cart_num, sessionID);
 			int cart_stock = cart.getCart_stock();
 	
 			// 장바구니 삭제하는 로직
- 			int re = db.deleteCart(cart_num);
+ 			int re = db.deleteCart(cart_num, sessionID);
 			if(re == 1) {
 				ProductDBBean pro_db = new ProductDBBean().getInstance();
 				ProductBean product = new ProductBean();

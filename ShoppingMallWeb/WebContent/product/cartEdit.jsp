@@ -14,7 +14,7 @@
 	ProductBean product = new ProductBean();
 	
 	CartDBBean db = new CartDBBean().getInstance();
-	CartBean getCart = db.getCart(cart_num);
+	CartBean getCart = db.getCart(cart_num, sessionID);
 	int ori_cartStock = getCart.getCart_stock();
 	int pro_num = getCart.getPro_num();
 	

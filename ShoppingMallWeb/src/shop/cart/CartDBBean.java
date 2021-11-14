@@ -39,6 +39,7 @@ public class CartDBBean {
 		String user_id = cart.getUser_id();
 		int pro_num = cart.getPro_num();
 		int cart_stock = cart.getCart_stock();
+		
 		int MyCart_proNum = 0;
 		int MyCart_stock;
 	
@@ -52,6 +53,7 @@ public class CartDBBean {
 			pstmt.setInt(2, pro_num);
 			rs = pstmt.executeQuery();
 			
+			// 동일한 상품이 추가될 시.
 			if(rs.next()) {
 				MyCart_proNum = rs.getInt(1);
 				MyCart_stock = rs.getInt(2);
@@ -69,7 +71,8 @@ public class CartDBBean {
 					re = 1;	
 				} 
 			} 
-			 
+			
+			// 동일한 상품 아닐 시.
 			if(pro_num != MyCart_proNum) {
 				sql = "select max(cart_num) from cart WHERE user_id=?";
 				pstmt = conn.prepareStatement(sql);
@@ -108,7 +111,7 @@ public class CartDBBean {
 
 
 	
-	public CartBean getCart(int cart_num) {
+	public CartBean getCart(int cart_num, String user_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -118,9 +121,10 @@ public class CartDBBean {
 		try {
 			conn = getConnection();
 			
-			sql2 = "select * from cart where cart_num=?";
+			sql2 = "select * from cart where cart_num=? AND user_id=?";
 			pstmt = conn.prepareStatement(sql2);
 			pstmt.setInt(1, cart_num);
+			pstmt.setString(2, user_id);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				cart.setCart_num(rs.getInt(1));
@@ -197,11 +201,12 @@ public class CartDBBean {
 		try {
 			conn = getConnection();
 			
-			sql = "update cart set cart_stock=? where cart_num=?";
+			sql = "update cart set cart_stock=? where cart_num=? AND user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setInt(1, cart.getCart_stock());
 			pstmt.setInt(2, cart.getCart_num());
+			pstmt.setString(3, cart.getUser_id());
 			pstmt.executeUpdate();
 			re = 1;
 		}catch (Exception e) {
@@ -219,7 +224,7 @@ public class CartDBBean {
 	}
 	
 	// 장바구니 페이지(cart.jsp)에서 해당 목록에 삭제를 누르면 그 상품만 삭제하는 로직
-	public int deleteCart(int cart_num) {
+	public int deleteCart(int cart_num, String user_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -228,9 +233,10 @@ public class CartDBBean {
 		
 		try {
 			conn = getConnection();
-			sql="delete from cart where cart_num=?";
+			sql="delete from cart where cart_num=? AND user_id=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cart_num);
+			pstmt.setString(2, user_id);
 			pstmt.executeUpdate();
 			re=1;
 		}catch (Exception e) {

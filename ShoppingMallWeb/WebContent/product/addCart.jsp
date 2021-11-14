@@ -18,7 +18,6 @@
 	
 	int pro_num = Integer.parseInt(request.getParameter("pro_num"));
 	int cart_stock = Integer.parseInt(request.getParameter("cart_stock"));
-	
 	String sessionID = (String)session.getAttribute("sessionID");
 	
 	//세션 값이 없으면 페이지 접근 할 수 없고, 바로 로그인창으로 가도록.
