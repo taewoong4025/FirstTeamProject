@@ -30,8 +30,8 @@
 				ProductDBBean pro_db = new ProductDBBean().getInstance();
 				ProductBean product = new ProductBean();
 				product = pro_db.getProduct(pro_num);
-				product.setPro_stock(product.getPro_stock() + cart_stock);
-				pro_db.editProduct(product);
+			//	product.setPro_stock(product.getPro_stock() + cart_stock);
+			//	pro_db.editProduct(product);
 				
 	%>
 				<script>alert("선택하신 장바구니 상품이 삭제되었습니다."); 

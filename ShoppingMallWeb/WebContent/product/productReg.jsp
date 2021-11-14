@@ -6,9 +6,10 @@
 
  <!-- header.jsp include -->
 		<jsp:include page="../header.jsp"></jsp:include>
+		<br><br><br>
 
 	<script type="text/javascript" src="productJS.js" charset="utf-8" ></script>
-	<style type="text/css">
+	 <style type="text/css">
 		table{
 			margin: auto;
 			margin-top: 60;
@@ -26,6 +27,7 @@
 			width: 200px;
 			text-align: center;
 			font-weight: bolder;
+			align:center;
 		}
 		input{
 			width: 300px;
@@ -35,9 +37,6 @@
 			width: 150px;
 			height: 25px;
 		}
-		#file{
-			padding-top: 10px;
-		}
 		#button:hover {
    		 	background-color: gray;
    		 	color: white;
@@ -45,11 +44,11 @@
 	</style>
 </head>
 <body>
-	<div class="container">
-	<form name="productform" method="post" action="productReg_ok.jsp" enctype="multipart/form-data">
-		<table border="1" rules="none">
+		<div class="container">
+			<form name="productform" method="post" action="productReg_ok.jsp" enctype="multipart/form-data">
+		<table border="1">
 			<tr>
-				<td colspan="2" id="title"><h1>제품 등록</h1></td>
+				<td colspan="2" id="title"><h2 align="center">제품 등록</h2></td>
 			</tr>
 			<tr>
 				<td id="first">제품 번호</td>
@@ -77,11 +76,9 @@
 			</tr>
 			<tr>
 				<td id="first">제품 이미지</td>
-				<td><input id="file" type="file" name="pro_img" size="50" accept='image/jpeg,image/gif,image/png' ></td>
+				<td><input type="file" name="pro_img" size="50" accept='image/jpeg,image/gif,image/png' ></td>
 			</tr>
-			<tr>
-				<td colspan="2"></td>
-			</tr>
+
 			<tr>
 				<td colspan="2" align="center">
 					<input id="button" type="button" value="확인" onclick="check_ok()">&nbsp;&nbsp;&nbsp;
@@ -90,7 +87,7 @@
 			</tr>
 		</table>
 		</form>
-		 </div>
+		</div>
 	
 		<br><br><br>
  <!-- footer.jsp include -->

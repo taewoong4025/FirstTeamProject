@@ -96,7 +96,7 @@ MemberBean member = manager.getMember(sessionID);
 		<hr/>
 		
 			<%
-				if(sessionID != null){
+				if(sessionID != null && member.getUser_level()!=9){
 			%>
 		
 			<a class="btn btn-primary btn-sm float-end" href="reviewWrite.jsp?pageNum=<%=pageNum%>">글쓰기</a>

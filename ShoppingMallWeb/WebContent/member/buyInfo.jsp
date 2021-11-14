@@ -17,12 +17,14 @@
 
 	<div class="container">
 		<table class="table table-striped">
+		<thead>
 			<tr>
 				<td>상품</td>
 				<td>가격</td>
 				<td>개수</td>
 				<td>결제날짜</td>
 			</tr>
+			</thead>
 	<%
 		String user_id = (String)session.getAttribute("sessionID");
 		CartDBBean manager = CartDBBean.getInstance();

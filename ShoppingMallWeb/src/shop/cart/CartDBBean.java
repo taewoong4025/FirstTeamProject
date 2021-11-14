@@ -342,7 +342,7 @@ public class CartDBBean {
 			int cart_stock=0, pro_stock=0;
 			int pro_num, cart_proNum;
             
-            for(int i=0; i< proList.size(); i++){
+            for(int i=0; i< proList.size(); i++){ // 제품 총 갯수의 길이 ex) 에어팟, 노트, 버즈 등등 3개
 				
 				for(int j = 0; j < cartList.size(); j++){
 					ProductBean product = proList.get(i);
