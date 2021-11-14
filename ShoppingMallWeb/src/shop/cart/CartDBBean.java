@@ -326,8 +326,6 @@ public class CartDBBean {
         ResultSet rs = null;
         String sql = "";
         String sql2 = "";
-        CartDBBean db = null;
-        
 
         try {
             conn = getConnection();
@@ -337,6 +335,8 @@ public class CartDBBean {
             
             ProductDBBean pro_db = new ProductDBBean().getInstance();
 			ArrayList<ProductBean> proList = pro_db.listProduct();
+			
+			CartDBBean db = new CartDBBean().getInstance();
 			ArrayList<CartBean> cartList = db.listCart(user_id);
 			
 			int cart_stock=0, pro_stock=0;
@@ -360,7 +360,6 @@ public class CartDBBean {
 						
 						pro_db.editProduct(product);
 					}
-					
 				}
 			}
             

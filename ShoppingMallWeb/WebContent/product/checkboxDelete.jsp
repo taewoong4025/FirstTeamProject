@@ -21,7 +21,7 @@ String sessionID = (String)session.getAttribute("sessionID");
 		for(int i=0; i<checkbox.length; i++){
 			CartBean cart = cartList.get(i);
 			cart_num = cart.getCart_num();
-			db.deleteCart(cart_num);
+		// db.deleteCart(cart_num);
 		}
 	}
 %>
