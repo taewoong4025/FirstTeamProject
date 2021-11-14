@@ -5,8 +5,8 @@
 <%@page import="shop.member.MemberBean"%>
 <%@page import="shop.member.MemberDBBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%
 String pageNum = request.getParameter("pageNum");
 
@@ -43,17 +43,17 @@ MemberBean member = manager.getMember(sessionID);
 
 <body>
 	
-	<h1 align="center">°øÁö»çÇ×</h1><br><br>
+	<h2 align="center">ê³µì§€ì‚¬í•­</h2><br><br>
 	
 	<div class="container">
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th>¹øÈ£</th>
-					<th>±ÛÁ¦¸ñ</th>
-					<th>ÀÛ¼ºÀÚ</th>
-					<th>ÀÛ¼ºÀÏ</th>
-					<th>Á¶È¸¼ö</th>
+					<th>ë²ˆí˜¸</th>
+					<th>ê¸€ì œëª©</th>
+					<th>ì‘ì„±ì</th>
+					<th>ì‘ì„±ì¼</th>
+					<th>ì¡°íšŒìˆ˜</th>
 				</tr>
 			</thead>
 			
@@ -81,8 +81,8 @@ MemberBean member = manager.getMember(sessionID);
 									<%
 								}
 							%>
-							<a href="show.jsp?id=<%= id %>&pageNum=<%= pageNum %>&sessionID=<%=sessionID%>"><%= b_title %></a></td>
-					<td><a href="mailto:>">°ü¸®ÀÚ</a></td>
+							<a style="text-decoration:none" href="show.jsp?id=<%= id %>&pageNum=<%= pageNum %>&sessionID=<%=sessionID%>"><%= b_title %></a></td>
+					<td><a style="text-decoration:none" href="mailto:>">ê´€ë¦¬ì</a></td>
 					<td><%= sdf.format(b_date)%></td>
 					<td><%= b_hit %></td>
 				</tr>
@@ -97,7 +97,7 @@ MemberBean member = manager.getMember(sessionID);
 				if(sessionID != null && member.getUser_level() == 9){
 			%>
 		
-			<a class="btn btn-primary btn-sm float-end" href="write.jsp?pageNum=<%= pageNum %>">±Û¾²±â</a>
+			<a class="btn btn-secondary btn-sm float-end" href="write.jsp?pageNum=<%= pageNum %>">ê¸€ì“°ê¸°</a>
 			
 			<%
 						}

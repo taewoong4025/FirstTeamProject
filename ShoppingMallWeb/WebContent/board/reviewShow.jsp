@@ -36,77 +36,57 @@
 		<br><br><br>
 
 <body>
-	<center>
-		<h1>게시물 조회</h1>
-		<table border="1" width="800" cellspacing="0">
-			<tr height="30" align="center">
-				<td width="100">
-					번호
-				</td>
-				<td width="200">
-					<%= id %>
-				</td>
-				
-				<td width="100">
-					조회수
-				</td>
-				<td width="200">
-					<%= b_hit %>
-				</td>	
-			</tr>
-			
-			<tr height="30" align="center">
-				
-				<td width="100">
-					작성일
-				</td>
-				<td width="200">
-					<%= sdf.format(b_date) %>
-				</td>
-				<td width="100">
-				이미지
-				</td>
-				<td width="200">
-				    <!-- Product image-->
-                <img src="${pageContext.request.contextPath}/reviewImg/<%= b_img %>" width="550" height="200"/>
-				</td>
-			</tr>
-			<tr height="30">
-				<td width="100" align="center">
-					제목
-				</td>
-				<td colspan="3" width="100">
-					<%= b_title %>
-				</td>
-			</tr>
-			<tr height="30">
-				<td width="100" align="center">
-					내용
-				</td>
-				<td colspan="3" width="100">
-					<pre>
-						<%= b_content %>
-					</pre>
-				</td>
-			</tr>
-			<tr height="30">
-				<td colspan="4" align="right">
-					
+	<h2 align="center">제품 리뷰</h2><br><br>
+	<div class="container">
+	
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+				<thead>
+					<tr>
+						<th colspan="3" style="background-color: #eeeeee; text-align: center;">게시판 글보기</th>						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width: 20%;">글제목</td>
+						<td colspan="2"><%=b_title %></td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td colspan="2"><%=id%></td>
+					</tr>
+					<tr>
+						<td>조회수</td>
+						<td colspan="2"><%=b_hit %></td>
+					</tr>
+					<tr>
+						<td>작성일자</td>
+						<td colspan="2"><%=sdf.format(b_date) %></td>
+					</tr>
+					<tr>
+						<td>이미지</td>
+						<td colspan="2" width="">
+						<!-- Product image-->
+              		  <img src="${pageContext.request.contextPath}/reviewImg/<%= b_img %>" width="550" height="200"/></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td colspan="2" style="min-height: 200px; text-align: center;"><%=b_content%></td>
+					</tr>
+				</tbody>
+			</table>
+
 					<%
-						if(sessionID.equals("admin")){
+						if(!sessionID.equals("admin")){
 					%>
-					<input type="button" value="글수정" onclick="location.href='edit.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
-					<input type="button" value="글삭제" onclick="location.href='delete.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
+					<!--리뷰게시판이므로 관리자 수정 x-->
+					<a class="btn btn-primary btn-sm" href="reviewEdit.jsp?id=<%= id %>&pageNum=<%= pageNum %>">글수정</a>
 					<%
 						}
 					%>
-					<!--공지사항 이므로 답변글 x-->
-					<!--  <input type="button" value="답변글" onclick="location.href='write.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">-->
-					<input type="button" value="글목록" onclick="location.href='reviewList.jsp?<%= pageNum %>'">
-				</td>
-			</tr>
-		</table>
-	</center>
+					<a class="btn btn-primary btn-sm" href="reviewDelete.jsp?id=<%= id %>&pageNum=<%= pageNum %>">글삭제</a>
+					<a class="btn btn-primary btn-sm" href="reviewList.jsp?<%= pageNum %>">목록</a>				
+		</div>
+		
 
 	<br><br><br><br><br><br>
 	     

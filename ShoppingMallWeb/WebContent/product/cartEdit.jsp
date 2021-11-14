@@ -15,8 +15,8 @@
 	
 	CartDBBean db = new CartDBBean().getInstance();
 	CartBean getCart = db.getCart(cart_num, sessionID);
-	int ori_cartStock = getCart.getCart_stock();
-	int pro_num = getCart.getPro_num();
+	//int ori_cartStock = getCart.getCart_stock();
+	//int pro_num = getCart.getPro_num();
 	
 	/* if(ori_cartStock > cart_stock) {
 		update_cartStock = ori_cartStock - cart_stock;
@@ -28,11 +28,11 @@
 		update_cartStock = ori_cartStock;
 	} */
 
-	cart.setCart_num(cart_num);
+	getCart.setCart_num(cart_num);
 	/* cart.setCart_stock(update_cartStock); */
-	cart.setCart_stock(cart_stock);
+	getCart.setCart_stock(cart_stock);
 	
-	int re = db.editCart(cart);
+	int re = db.editCart(getCart);
 	
 	if(sessionID == null || sessionID.equals("")){
 	%>
@@ -41,7 +41,7 @@
 		</script>
 	<%	
 	} else {
-		if(re == 1){
+		/* if(re == 1){
 			ProductDBBean Prodb = new ProductDBBean().getInstance();
 			product = Prodb.getProduct(pro_num);
 			int pro_stock = product.getPro_stock();
@@ -57,19 +57,13 @@
 				product.setPro_stock(pro_stock);
 			}
 			
-			Prodb.editProduct(product);
+			Prodb.editProduct(product); */
 			
 		%>
 			<script>document.location.href="cart.jsp";</script>
 			
 		<%
-		}else{
-		%>
-			<script>alert("적용 실패");
-			document.location.href="cart.jsp";</script>
-		<%
-		
-			}
+
 		}
 %>
 <!DOCTYPE html>

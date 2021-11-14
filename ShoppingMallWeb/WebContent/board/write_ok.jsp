@@ -1,10 +1,13 @@
 <%@page import="java.net.InetAddress"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="shop.board.BoardDBBean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <jsp:useBean id="board" class="shop.board.BoardBean"></jsp:useBean>
 <jsp:setProperty property="*" name="board"/>
+
+<meta charset="utf-8">
+
 <%
 	board.setB_date(new Timestamp(System.currentTimeMillis()));
 

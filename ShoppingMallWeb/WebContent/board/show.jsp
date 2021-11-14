@@ -2,8 +2,8 @@
 <%@page import="java.sql.Timestamp"%>
 <%@page import="shop.board.BoardBean"%>
 <%@page import="shop.board.BoardDBBean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%
 	String pageNum = request.getParameter("pageNum");
 	int Id = Integer.parseInt(request.getParameter("id"));
@@ -35,76 +35,53 @@
 		<br><br><br>
 
 <body>
-	<center>
-		<h1>�Խù� ��ȸ</h1>
-		<table border="1" width="800" cellspacing="0">
-			<tr height="30" align="center">
-				<td width="100">
-					��ȣ
-				</td>
-				<td width="200">
-					<%= id %>
-				</td>
-				
-				<td width="100">
-					��ȸ��
-				</td>
-				<td width="200">
-					<%= b_hit %>
-				</td>	
-			</tr>
-			
-			<tr height="30" align="center">
-				
-				<td width="100">
-					�ۼ���
-				</td>
-				<td width="200">
-					<%= sdf.format(b_date) %>
-				</td>
-				<td width="100">
-					�ϴ� ����
-				</td>
-				<td width="200">
-				
-				</td>
-			</tr>
-			<tr height="30">
-				<td width="100" align="center">
-					����
-				</td>
-				<td colspan="3" width="100">
-					<%= b_title %>
-				</td>
-			</tr>
-			<tr height="30">
-				<td width="100" align="center">
-					����
-				</td>
-				<td colspan="3" width="100">
-					<pre>
-						<%= b_content %>
-					</pre>
-				</td>
-			</tr>
-			<tr height="30">
-				<td colspan="4" align="right">
-					
-					<%
+		<h2 align="center">공지사항 글</h2><br><br>
+	<div class="container">
+	
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+				<thead>
+					<tr>
+						<th colspan="3" style="background-color: #eeeeee; text-align: center;">게시판 글보기</th>						
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="width: 20%;">글제목</td>
+						<td colspan="2"><%=b_title %></td>
+					</tr>
+					<tr>
+						<td>작성자</td>
+						<td colspan="2">관리자</td>
+					</tr>
+					<tr>
+						<td>조회수</td>
+						<td colspan="2"><%=b_hit %></td>
+					</tr>
+					<tr>
+						<td>작성일자</td>
+						<td colspan="2"><%=sdf.format(b_date) %></td>
+					</tr>
+					<tr>
+						<td>내용</td>
+						<td colspan="2" style="min-height: 200px; text-align: center;"><%=b_content%></td>
+					</tr>
+				</tbody>
+			</table>
+
+<%
 						if(sessionID.equals("admin")){
 					%>
-					<input type="button" value="�ۼ���" onclick="location.href='edit.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
-					<input type="button" value="�ۻ���" onclick="location.href='delete.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">
+					<a class="btn btn-primary btn-sm" href="edit.jsp?id=<%= id %>&pageNum=<%= pageNum %>">수정</a>				
+					<a class="btn btn-primary btn-sm" href="delete.jsp?id=<%= id %>&pageNum=<%= pageNum %>">삭제</a>				
 					<%
 						}
 					%>
-					<!--�������� �̹Ƿ� �亯�� x-->
-					<!--  <input type="button" value="�亯��" onclick="location.href='write.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">-->
-					<input type="button" value="�۸��" onclick="location.href='list.jsp?<%= pageNum %>'">
-				</td>
-			</tr>
-		</table>
-	</center>
+					<!--공지사항 이므로 답변글 x-->
+					<!--  <input type="button" value="답변글" onclick="location.href='write.jsp?id=<%= id %>&pageNum=<%= pageNum %>'">-->
+					<a class="btn btn-primary btn-sm" href="list.jsp?<%= pageNum %>">목록</a>				
+		</div>
+		
+		
 
 	<br><br><br><br><br><br>
 	     

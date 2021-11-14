@@ -3,8 +3,8 @@
 <%@page import="shop.cart.CartDBBean"%>
 <%@page import="shop.product.ProductDBBean"%>
 <%@page import="shop.product.ProductBean"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,14 +20,14 @@
 	int cart_stock = Integer.parseInt(request.getParameter("cart_stock"));
 	String sessionID = (String)session.getAttribute("sessionID");
 	
-	//¼¼¼Ç °ªÀÌ ¾øÀ¸¸é ÆäÀÌÁö Á¢±Ù ÇÒ ¼ö ¾ø°í, ¹Ù·Î ·Î±×ÀÎÃ¢À¸·Î °¡µµ·Ï.
+	//ì„¸ì…˜ ê°’ì´ ì—†ìœ¼ë©´ í˜ì´ì§€ ì ‘ê·¼ í•  ìˆ˜ ì—†ê³ , ë°”ë¡œ ë¡œê·¸ì¸ì°½ìœ¼ë¡œ ê°€ë„ë¡.
 	if(sessionID == null || sessionID.equals("")) {
 	%>
-		<script>alert("·Î±×ÀÎ ÈÄ ÀÌ¿ëÇØÁÖ½Ã±æ ¹Ù¶ø´Ï´Ù."); 
+		<script>alert("ë¡œê·¸ì¸ í›„ ì´ìš©í•´ì£¼ì‹œê¸¸ ë°”ëë‹ˆë‹¤."); 
 		document.location.href="../member/login.html";
 		</script>
 	<%
-	// ¼½¼Ç°ª(·Î±×ÀÎÀÌ)ÀÌ ÀÖ¾î ÀÖÀ¸¸é, Àå¹Ù±¸´Ï·Î Ãß°¡ÇÏ´Â ·ÎÁ÷ ½ÇÇà.	
+	// ì„¹ì…˜ê°’(ë¡œê·¸ì¸ì´)ì´ ìˆì–´ ìˆìœ¼ë©´, ì¥ë°”êµ¬ë‹ˆë¡œ ì¶”ê°€í•˜ëŠ” ë¡œì§ ì‹¤í–‰.	
 	} else {
 		
 		ProductDBBean db = ProductDBBean.getInstance();
@@ -45,20 +45,20 @@
 		CartDBBean cartDB = CartDBBean.getInstance();
 		
 		int re = cartDB.insertCart(cart);
-			// µ¥ÀÌÅÍº£ÀÌ½º¿¡ Á¤»óÀûÀ¸·Î Ãß°¡°¡ µÇ¸é, insertCart()¸Ş¼Òµå°¡ 1À» ¹İÈ¯ÇÔ. 
+			// ë°ì´í„°ë² ì´ìŠ¤ì— ì •ìƒì ìœ¼ë¡œ ì¶”ê°€ê°€ ë˜ë©´, insertCart()ë©”ì†Œë“œê°€ 1ì„ ë°˜í™˜í•¨. 
 			if(re==1) {
-				// Àå¹Ù±¸´Ï Ãß°¡ ½Ã, Àç°í·® ¾÷µ¥ÀÌÆ®
-				product.setPro_stock((product.getPro_stock() - cart.getCart_stock()));
-				db.editProduct(product);
+				// ì¥ë°”êµ¬ë‹ˆ ì¶”ê°€ ì‹œ, ì¬ê³ ëŸ‰ ì—…ë°ì´íŠ¸
+				//product.setPro_stock((product.getPro_stock() - cart.getCart_stock()));
+				//db.editProduct(product);
 			%>
-				<script>alert("»óÇ°À» Àå¹Ù±¸´Ï¿¡ Ãß°¡ÇÏ¿´½À´Ï´Ù.");
+				<script>alert("ìƒí’ˆì„ ì¥ë°”êµ¬ë‹ˆì— ì¶”ê°€í•˜ì˜€ìŠµë‹ˆë‹¤.");
 				document.location.href="productPage.jsp?pro_num=" + <%=pro_num%>;
 				</script>
 				
 			<%
 			}else{
 			%>
-				<script>alert("Ãß°¡ ½ÇÆĞ");
+				<script>alert("ì¶”ê°€ ì‹¤íŒ¨");
 				document.location.href="productPage.jsp?pro_num=" + <%=pro_num%>;</script>
 			<%
 			}

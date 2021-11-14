@@ -285,11 +285,12 @@ public class reviewBoardDBBean {
 				if (!password.equals(board.getPassword())) {
 					re=0;
 				}else {
-					sql="update reviewboard set b_title=?, b_content=? where Id=?";
+					sql="update reviewboard set b_title=?, b_content=?, b_img=? where Id=?";
 					pstmt = conn.prepareStatement(sql);
-					pstmt.setString(1, HanConv.toKor(board.getB_title()));
-					pstmt.setString(2, HanConv.toKor(board.getB_content()));
-					pstmt.setInt(3, board.getId());
+					pstmt.setString(1, board.getB_title());
+					pstmt.setString(2, board.getB_content());
+					pstmt.setString(3, board.getB_img());
+					pstmt.setInt(4, board.getId());
 					pstmt.executeUpdate();
 					re=1;
 				}

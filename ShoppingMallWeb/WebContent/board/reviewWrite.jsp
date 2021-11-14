@@ -47,79 +47,82 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-</head>
+
+<!-- header.jsp include -->
+<jsp:include page="../header.jsp"></jsp:include></head>
+<br>
+<br>
+<br>
+
 <body>
-	<center>
-		<h2>리뷰 작성</h2>
+		<h2 align="center">리뷰 작성</h2>
 		
 		<form name="form" method="post" action="reviewWrite_ok.jsp" enctype="multipart/form-data">
 			<input type="hidden" name="id" value="<%= id %>">
 			<input type="hidden" name="b_ref" value="<%= b_ref %>">
 			<input type="hidden" name="b_step" value="<%= b_step %>">
 			<input type="hidden" name="b_level" value="<%= b_level %>">
-			<table border="1">
-				<tr height="30">
-					<td width="80">
-						제목
-					</td>
-					<td colspan="3">
-						<%
-							if(id == 0){
-								%>
-						 			<input name="b_title" type="text" size="33" >
+			
+				<div class="container">
+				<table class="table table-hover">
+					<tbody>
+						<tr>
+							<td>
 								<%
-							}else{
-								%>
-									<input name="b_title" type="text" size="50" value="[답변]:<%= b_title %>" readonly="readonly">
-								<%
-							}
-						%>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="4">
-						<textarea name="b_content" rows="10" cols="65"></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td width="80">
-						비밀번호
-					</td>
-					<td colspan="3">
-						<input name="password" type="password" size="12" maxlength="12">
-					</td>
-				</tr>
-				<tr>
-				<td>제품 이미지</td>
-				<td><input id="file" type="file" name="b_img" size="50" accept='image/jpeg,image/gif,image/png' ></td>
-			</tr>
-			<tr>
-				<td>제품 선택</td>
-				<td>
-				<select name="pro_name">
+								if (id == 0) {
+								%> <input type="text" class="form-control" placeholder="글 제목" name="b_title" maxlength="40"> <%
+ 								} else {
+								 %> <input type="text" class="form-control" placeholder="글 제목" name="b_title" maxlength="40" value="[답변]:<%=b_title%>" readonly="readonly"> <%
+ 								}
+ 						%>
+							</td>
+						</tr>
+						<tr>
+							<td><textarea type="text" class="form-control" placeholder="글 내용을 작성하세요" name="b_content" maxlength="1024" style="height: 400px;"></textarea></td>
+						</tr>
+				
+						<tr>
+							<td><input type="password" class="form-control" placeholder="비밀번호를 입력하세요" name="password" maxlength="40">
+							</td>
+						<tr>
+							<td><input id="file" type="file" class="form-control" placeholder="파일첨부" name="b_img" accept='image/jpeg,image/gif,image/png'>
+							</td>
+						</tr>
+						<tr>
+							<td><select name="pro_name" class="form-control">
+							<option selected>제품을 고르세요.</option>
+						<!-- 회원이 구매한 수 만큼 제품이 들어있다. -->
 				<%
 					for(int i = 0; i<buyList.size(); i++){
 						buyBean buy = buyList.get(i);
 						pro_name = buy.getPro_name();
 					
 				%>
-				<option value="<%=pro_name%>"><%=pro_name%></option>
-				<%
-					}
-				%>
+				<option value="<%=pro_name%>"> <%=pro_name%> </option>
+				
+			<%} %>
 				</select>
 				</td>
-			</tr>
-				<tr height="50" align="center">
-					<td colspan="4">
-						<input type="button" value="글쓰기" onclick="check_ok()" >&nbsp;
-						<input type="reset" value="다시작성">&nbsp;
-						<input type="button" value="글목록"  onclick="location.href='reviewList.jsp?<%=pageNum %>'" >&nbsp;
-					</td>
 				</tr>
-			</table>
+				</tbody>
+				</table>
+					<input type="button" class="btn btn-primary btn-sm" value="글쓰기" onclick="check_ok()">
+					 <input type="reset" class="btn btn-primary btn-sm" value="다시작성">
+					 <input type="button" class="btn btn-primary btn-sm" value="글목록" onclick="location.href='reviewList.jsp?<%=pageNum%>'">&nbsp;
+			</div>
+			
+			
 		</form>
-	</center>
+	
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+
+	<!-- footer.jsp include -->
+	<jsp:include page="../footer.jsp"></jsp:include>
 </body>
 </html>
 

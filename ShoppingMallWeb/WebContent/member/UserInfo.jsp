@@ -53,7 +53,8 @@
     %>
                    <!-- 가져온 회원정보를 출력한다. -->
                    <br><br><br>
-        <table>
+         <div class="container">
+        <table class="table table-striped">
         	<tr>
 			   <td colspan="2" align="center">
 			   	<b><font size="6" color="gray">내 정보</font></b>
@@ -113,6 +114,7 @@
             </td>
             </tr>
         </table>
+        </div>
         <br><br><br><br><br><br>
         	     
 	 <!-- footer.jsp include -->

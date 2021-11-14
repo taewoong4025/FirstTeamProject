@@ -11,6 +11,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import shop.product.ProductBean;
+import shop.product.ProductDBBean;
 
 public class CartDBBean {
 	
@@ -26,7 +27,7 @@ public class CartDBBean {
 		return ds.getConnection();
 	}
 	
-	// Àå¹Ù±¸´Ï(cart) Å×ÀÌºí¿¡ °ª Ãß°¡ÇÏ´Â ·ÎÁ÷
+	// å ì™ì˜™è¢‚å ì™ì˜™å ï¿½(cart) å ì™ì˜™å ì‹±ë¸ì˜™ å ì™ì˜™ å ìŒ©ê³¤ì˜™å ì‹¹ëŒì˜™ å ì™ì˜™å ì™ì˜™
 	public int insertCart(CartBean cart) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -35,7 +36,7 @@ public class CartDBBean {
 		int re = -1;
 		int number = 1;
 		
-		// Ä«Æ®ÂÊ¿¡¼­ ¹Ş¾Æ¿Ã º¯¼ö°ª ¼ÂÆÃ
+		// ì¹´íŠ¸å ì‹­ìš¸ì˜™å ì™ì˜™ å ìŒ¨ì•„ìš¸ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™
 		String user_id = cart.getUser_id();
 		int pro_num = cart.getPro_num();
 		int cart_stock = cart.getCart_stock();
@@ -53,7 +54,7 @@ public class CartDBBean {
 			pstmt.setInt(2, pro_num);
 			rs = pstmt.executeQuery();
 			
-			// µ¿ÀÏÇÑ »óÇ°ÀÌ Ãß°¡µÉ ½Ã.
+			// ë™ì¼í•œ ìƒí’ˆì´ ì¶”ê°€ë  ì‹œ.
 			if(rs.next()) {
 				MyCart_proNum = rs.getInt(1);
 				MyCart_stock = rs.getInt(2);
@@ -72,7 +73,7 @@ public class CartDBBean {
 				} 
 			} 
 			
-			// µ¿ÀÏÇÑ »óÇ° ¾Æ´Ò ½Ã.
+			// ë™ì¼í•œ ìƒí’ˆ ì•„ë‹ ì‹œ.
 			if(pro_num != MyCart_proNum) {
 				sql = "select max(cart_num) from cart WHERE user_id=?";
 				pstmt = conn.prepareStatement(sql);
@@ -99,10 +100,10 @@ public class CartDBBean {
 				conn.close();
 			}
 			
-			//ÇöÀç ·¹ÄÚµå Áß¿¡¼­ °¡Àå Å« ±Û ¹øÈ£¸¦ ¾ò¾î³½´Ù.(¹øÈ£+1)
-			System.out.println("¿ä±â Ãß°¡ ¼º°ø");
+			//å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ìŒ˜ë“¸ì˜™ å ìŒ©ìš¸ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™ í° å ì™ì˜™ å ì™ì˜™í˜¸å ì™ì˜™ å ì™ì˜™çˆ­ì™ì˜™å ï¿½.(å ì™ì˜™í˜¸+1)
+			System.out.println("å ì™ì˜™å ï¿½ å ìŒ©ê³¤ì˜™ å ì™ì˜™å ì™ì˜™");
 		}catch (Exception e) {
-			System.out.println("Ãß°¡ ½ÇÆĞ");
+			System.out.println("å ìŒ©ê³¤ì˜™ å ì™ì˜™å ì™ì˜™");
 			e.printStackTrace();
 		}
 		
@@ -150,7 +151,7 @@ public class CartDBBean {
 		return cart;
 	}
 	
-	// ¾ÆÀÌµğ °ªÀ» ¹Ş¾Æ, ÇØ´ç ¾ÆÀÌµğ°¡ º¸À¯ÇÑ Àå¹Ù±¸´Ï ¸ñ·ÏÀ» Å×ÀÌºí¿¡ °¡Á®¿À´Â ·ÎÁ÷.
+	// å ì™ì˜™å ì‹±ë“¸ì˜™ å ì™ì˜™å ì™ì˜™ å ìŒ¨ì–µì˜™, å ìŒ”ëŒì˜™ å ì™ì˜™å ì‹±ë“¸ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™è¢‚å ì™ì˜™å ï¿½ å ì™ì˜™å ì™ì˜™å ï¿½ å ì™ì˜™å ì‹±ë¸ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™.
 	public ArrayList<CartBean> listCart(String user_id){
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -190,7 +191,7 @@ public class CartDBBean {
 		return cartList;
 	}
 	
-	// Àå¹Ù±¸´Ï ³»¿¡¼­ ¼ö·®À» Á¶ÀıÇÏ¿© Å×ÀÌºí¿¡ ¿¬µ¿ÇÏ´Â ·ÎÁ÷
+	// å ì™ì˜™è¢‚å ì™ì˜™å ï¿½ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì‹¹ìš¸ì˜™ å ì™ì˜™å ì‹±ë¸ì˜™ å ì™ì˜™å ì™ì˜™å ì‹¹ëŒì˜™ å ì™ì˜™å ì™ì˜™
 	public int editCart(CartBean cart) throws Exception{
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -223,7 +224,7 @@ public class CartDBBean {
 		return re;
 	}
 	
-	// Àå¹Ù±¸´Ï ÆäÀÌÁö(cart.jsp)¿¡¼­ ÇØ´ç ¸ñ·Ï¿¡ »èÁ¦¸¦ ´©¸£¸é ±× »óÇ°¸¸ »èÁ¦ÇÏ´Â ·ÎÁ÷
+	// ì¥ë°”êµ¬ë‹ˆ í˜ì´ì§€(cart.jsp)ì—ì„œ í•´ë‹¹ ëª©ë¡ì— ì‚­ì œë¥¼ ëˆ„ë¥´ë©´ ê·¸ ìƒí’ˆë§Œ ì‚­ì œí•˜ëŠ” ë¡œì§
 	public int deleteCart(int cart_num, String user_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -254,7 +255,7 @@ public class CartDBBean {
 		return re;
 	}
 	
-	// Àå¹Ù±¸´Ï ÆäÀÌÁö(cart.jsp)¿¡¼­ ¸ñ·Ï ÀüÃ¼ÀÇ »óÇ°À» »èÁ¦ÇÏ´Â ·ÎÁ÷.
+	// å ì™ì˜™è¢‚å ì™ì˜™å ï¿½ å ì™ì˜™å ì™ì˜™å ì™ì˜™(cart.jsp)å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ï¿½ å ì™ì˜™ì²´å ì™ì˜™ å ì™ì˜™í’ˆå ì™ì˜™ å ì™ì˜™å ì™ì˜™å ì‹¹ëŒì˜™ å ì™ì˜™å ì™ì˜™.
 	public int deleteAllCart(String user_id) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -325,12 +326,43 @@ public class CartDBBean {
         ResultSet rs = null;
         String sql = "";
         String sql2 = "";
+        CartDBBean db = null;
+        
 
         try {
             conn = getConnection();
             stmt = conn.createStatement();
             sql="insert into buy(user_id,pro_name,pro_price,cart_stock) select user_id,pro_name,pro_price,cart_stock from cart";
             rs = stmt.executeQuery(sql);
+            
+            ProductDBBean pro_db = new ProductDBBean().getInstance();
+			ArrayList<ProductBean> proList = pro_db.listProduct();
+			ArrayList<CartBean> cartList = db.listCart(user_id);
+			
+			int cart_stock=0, pro_stock=0;
+			int pro_num, cart_proNum;
+            
+            for(int i=0; i< proList.size(); i++){
+				
+				for(int j = 0; j < cartList.size(); j++){
+					ProductBean product = proList.get(i);
+					CartBean cart = cartList.get(j);
+					
+					pro_num = product.getPro_num();
+					cart_proNum = cart.getPro_num();
+					
+					if(pro_num == cart_proNum) {
+						pro_stock = product.getPro_stock();
+						cart_stock = cart.getCart_stock();
+						
+						pro_stock = pro_stock - cart_stock;
+						product.setPro_stock(pro_stock);
+						
+						pro_db.editProduct(product);
+					}
+					
+				}
+			}
             
             sql2="delete from cart where user_id = ?";
            	pstmt = conn.prepareStatement(sql2);
@@ -351,8 +383,7 @@ public class CartDBBean {
         }
     }
 	
-	
-	// ¾ÆÀÌµğ °ªÀ» ¹Ş¾Æ, ÇØ´ç ¾ÆÀÌµğ°¡ º¸À¯ÇÑ Àå¹Ù±¸´Ï ¸ñ·ÏÀ» Å×ÀÌºí¿¡ °¡Á®¿À´Â ·ÎÁ÷.
+	// å ì™ì˜™å ì‹±ë“¸ì˜™ å ì™ì˜™å ì™ì˜™ å ìŒ¨ì–µì˜™, å ìŒ”ëŒì˜™ å ì™ì˜™å ì‹±ë“¸ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™è¢‚å ì™ì˜™å ï¿½ å ì™ì˜™å ì™ì˜™å ï¿½ å ì™ì˜™å ì‹±ë¸ì˜™ å ì™ì˜™å ì™ì˜™å ì™ì˜™å ì™ì˜™ å ì™ì˜™å ì™ì˜™.
 		public ArrayList<buyBean> listBuy(String user_id){
 			Connection conn = null;
 			PreparedStatement pstmt = null;
@@ -362,7 +393,7 @@ public class CartDBBean {
 			ArrayList<buyBean> buyList = new ArrayList<buyBean>();
 			try {
 				conn = getConnection();
-				sql = "select * from buy where user_id=?";
+				sql = "select * from buy where user_id=? order by \"buy_regdate\" desc";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user_id);
 				rs = pstmt.executeQuery();
