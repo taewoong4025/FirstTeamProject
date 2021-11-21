@@ -46,9 +46,9 @@ public class ProductDBBean {
 			re = 1;
 			pstmt.close();
 			conn.close();
-			System.out.println("Ãß°¡ ¼º°ø");
+			System.out.println("ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		}catch (Exception e) {
-			System.out.println("Ãß°¡ ½ÇÆÐ");
+			System.out.println("ï¿½ß°ï¿½ ï¿½ï¿½ï¿½ï¿½");
 			e.printStackTrace();
 		}
 		
@@ -65,7 +65,7 @@ public class ProductDBBean {
 		try {
 			conn = getConnection();
 			stmt = conn.createStatement();
-			sql = "select * from product";
+			sql = "select * from product order by pro_num";
 			rs = stmt.executeQuery(sql);
 			while(rs.next()) {
 				ProductBean product = new ProductBean();

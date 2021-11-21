@@ -78,12 +78,12 @@
 					<%
 						if(!sessionID.equals("admin")){
 					%>
-					<!--리뷰게시판이므로 관리자 수정 x-->
+					<!--리뷰게시판이므로 관리자 수정 삭제x-->
 					<a class="btn btn-primary btn-sm" href="reviewEdit.jsp?id=<%= id %>&pageNum=<%= pageNum %>">글수정</a>
+					<a class="btn btn-primary btn-sm" href="reviewDelete.jsp?id=<%= id %>&pageNum=<%= pageNum %>">글삭제</a>
 					<%
 						}
 					%>
-					<a class="btn btn-primary btn-sm" href="reviewDelete.jsp?id=<%= id %>&pageNum=<%= pageNum %>">글삭제</a>
 					<a class="btn btn-primary btn-sm" href="reviewList.jsp?<%= pageNum %>">목록</a>				
 		</div>
 		

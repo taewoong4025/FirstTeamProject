@@ -392,7 +392,7 @@ public class CartDBBean {
 			ArrayList<buyBean> buyList = new ArrayList<buyBean>();
 			try {
 				conn = getConnection();
-				sql = "select * from buy where user_id=? order by \"buy_regdate\" desc";
+				sql = "select * from buy where user_id=? order by buy_regdate desc";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, user_id);
 				rs = pstmt.executeQuery();

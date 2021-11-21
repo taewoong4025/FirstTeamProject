@@ -61,7 +61,7 @@ if (board != null) {
  								} else {
 								 %> <input type="text" class="form-control" placeholder="글 제목" name="b_title" maxlength="40" value="[답변]:<%=b_title%>" readonly="readonly"> <%
  								}
- 						%>
+ 								%>
 							</td>
 						</tr>
 						<tr>
